@@ -1,0 +1,3124 @@
+{
+  "api_documentation": {
+    "source": "goszakup.gov.kz",
+    "total_endpoints": 74,
+    "endpoints": [
+      {
+        "name": "Документация по GraphQL",
+        "id": "graphql-dokumentatsiia-po-graphql",
+        "request": {
+          "method": "GET",
+          "endpoint": "/help/v3/schema/",
+          "content_type": ""
+        },
+        "response": {
+          "headers": {},
+          "responses": [
+            {
+              "content_type": ""
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение данных с объекта",
+        "id": "graphql-poluchenie-dannykh-s-ob-ekta",
+        "request": {
+          "method": "POST",
+          "endpoint": "/v3/graphql",
+          "body": {
+            "operationName": null,
+            "query": "query($limit: Int, $after: Int, $filter: TrdBuyFiltersInput!){ trd_buy(limit: $limit, after: $after, filters: $filter) { id name_ru name_kz number_anno } }",
+            "variables": {
+              "limit": 10,
+              "filter": {
+                "ref_buy_status_id": [
+                  210,
+                  220
+                ]
+              }
+            }
+          },
+          "content_type": "application/json"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "data": {
+                  "trd_buy": [
+                    {
+                      "id": 459799,
+                      "name_ru": "тест_bela",
+                      "name_kz": "тест_bela",
+                      "number_anno": "459799-1"
+                    }
+                  ]
+                },
+                "extensions": {
+                  "pageInfo": {
+                    "limitPage": 50,
+                    "totalCount": 173615,
+                    "hasNextPage": true,
+                    "lastId": 458619
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение списка измененных объектов",
+        "id": "zhurnal-izmenenii-ob-ektov-poluchenie-spiska-izmenennykh-ob-ektov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/journal?date_from=2017-12-05&date_to=2017-12-09"
+        },
+        "response": {
+          "description": "Структура ответа:action- Событие. U - Обновление или изменение документа, D - Удаление документаobject_id- ИД объектаdate_action- Дата событияservice_name- Имя сервиса в котором произошло изменениеservice_title- Наименование сервисаurl- Ссылка на документ",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 3,
+                "limit": 10,
+                "items": [
+                  {
+                    "object_id": "3731",
+                    "action": "U",
+                    "date_action": "2017-12-08 18:19:53",
+                    "service_name": "subject",
+                    "service_title": "Реестр участников",
+                    "url": "https://ows.goszakup.gov.kz/v3/subject/3731"
+                  },
+                  {
+                    "object_id": "1-4909",
+                    "action": "D",
+                    "date_action": "2017-12-08 18:01:15",
+                    "service_name": "rnu",
+                    "service_title": "Реестр недобросовестных",
+                    "url": ""
+                  },
+                  {
+                    "object_id": "1-4337",
+                    "action": "D",
+                    "date_action": "2017-12-08 18:01:15",
+                    "service_name": "rnu",
+                    "service_title": "Реестр недобросовестных",
+                    "url": ""
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение списка компаний участников",
+        "id": "reestr-uchastnikov-poluchenie-spiska-kompanii-uchastnikov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/subject"
+        },
+        "response": {
+          "description": "Ответ от сервиса:pid- ID участникаbin- БИНiin- ИИНparent_subject- БИН головной организацииparent_name_kz- Наименование на казахском языкеparent_name_ru- Наименование на русском языкеname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеtype_supplier- Тип поставщика (1 - юридическое лицо, 2 - физическое лицо, 3 - ИП)system_id- ИД Системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 68903,
+                "limit": 50,
+                "next_page": "/v3/subject?page=next&search_after=109466",
+                "items": [
+                  {
+                    "pid": 110191,
+                    "bin": null,
+                    "iin": "910227300351",
+                    "parent_subject": "150740006678",
+                    "parent_name_kz": "Қазақстан Республикасы Денсаулық сақтау министрлігі Қоғамдық денсаулық сақтау комитетінің \"Ұлттық сараптама орталығы\" шаруашылық жүргізу құқығындағы республикалық мемлекеттік кәсіпорны",
+                    "parent_name_ru": "Республиканское государственное предприятие на праве хозяйственного ведения \"Национальный центр экспертизы\" Комитета охраны общественного здоровья Министерства здравоохранения Республики Казахстан",
+                    "name_ru": "ИП \"Эльдар\"",
+                    "name_kz": "ИП \"Эльдар\"",
+                    "type_supplier": 3,
+                    "system_id": 3,
+                    "index_date": "2018-01-03 03:01:18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр участников: Полный список",
+        "id": "reestr-uchastnikov-reestr-uchastnikov-polnyi-spisok",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/subject/all"
+        },
+        "response": {
+          "description": "Ответ от сервиса:pid- ID участникаbin- БИНiin- ИИНinn- ИННunp- УНПparent_subject- БИН головной организацииparent_name_kz- Наименование на казахском языкеparent_name_ru- Наименование на русском языкеregdate- Дата свидетельства о государственной регистрацииcrdate- Дата регистрацииindex_date- Дата индексацииnumber_reg- Номер свидетельства о государственной регистрацииseries- Серия свидетельства (для ИП)name_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеfull_name_ru- Полное наименование на русском языкеfull_name_kz- Полное наименование на казахском языкеcountry_code- Страна по ЭЦПcustomer- Флаг Заказчик (1 - да, 0 - Нет)organizer- Флаг Организатор (1 - да, 0 - Нет)mark_national_company- Флаг Национальная компания (1 - да, 0 - Нет)ref_kopf_code- Код КОПФmark_assoc_with_disab- Флаг Объединение инвалидов (1 - да, 0 - Нет)system_id- ИД Системыsupplier- Флаг Поставщик (1 - да, 0 - Нет)type_supplier- Тип поставщика (1 - юридическое лицо, 2 - физическое лицо, 3 - ИП)krp_code- Размерность предприятия (КРП)oked_list- ОКЭДkse_code- Код сектора экономикиmark_world_company- Флаг Международная организация (1 - да, 0 - Нет)mark_state_monopoly- Флаг Субъект государственной монополии (1 - да, 0 - Нет)mark_natural_monopoly- Флаг Субъект естественной монополии (1 - да, 0 - Нет)mark_patronymic_producer- Флаг Отечественный товаропроизводитель (1 - да, 0 - Нет)mark_patronymic_supplyer- Флаг Отечественный поставщик (1 - да, 0 - Нет)mark_small_employer- Флаг Субъект малого предпринимательства (СМП) (1 - да, 0 - Нет)is_single_org- Флаг Единый организатор (1 - да, 0 - Нет)email- E-Mailphone- Телефонwebsite- Web сайтlast_update_date- Дата последнего редактированияqvazi- Флаг Квазисектораyear- Год регистрацииmark_resident- Флаг резидента",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 68903,
+                "limit": 50,
+                "next_page": "/v3/subject/all?page=next&search_after=109466",
+                "items": [
+                  {
+                    "pid": 110191,
+                    "bin": null,
+                    "iin": "910227300351",
+                    "inn": null,
+                    "unp": null,
+                    "parent_subject": "150740006678",
+                    "parent_name_kz": "Қазақстан Республикасы Денсаулық сақтау министрлігі Қоғамдық денсаулық сақтау комитетінің \"Ұлттық сараптама орталығы\" шаруашылық жүргізу құқығындағы республикалық мемлекеттік кәсіпорны",
+                    "parent_name_ru": "Республиканское государственное предприятие на праве хозяйственного ведения \"Национальный центр экспертизы\" Комитета охраны общественного здоровья Министерства здравоохранения Республики Казахстан",
+                    "regdate": "2018-01-03 12:10:15",
+                    "crdate": "2017-12-26 00:00:00",
+                    "index_date": "2018-01-03 03:01:18",
+                    "series": "6009",
+                    "name_ru": "ИП \"Эльдар\"",
+                    "name_kz": "ИП \"Эльдар\"",
+                    "full_name_ru": null,
+                    "full_name_kz": null,
+                    "email": "asd@asd.kz",
+                    "phone": "+77076833116",
+                    "website": "вэвэвэ.ецц.kz",
+                    "last_update_date": "2017-12-26 00:00:00",
+                    "country_code": "398",
+                    "qvazi": 0,
+                    "customer": 0,
+                    "organizer": 0,
+                    "mark_national_company": 0,
+                    "ref_kopf_code": "ИНД",
+                    "mark_assoc_with_disab": 0,
+                    "year": 2015,
+                    "mark_resident": 1,
+                    "system_id": 3,
+                    "supplier": 1,
+                    "type_supplier": 3,
+                    "krp_code": 0,
+                    "oked_list": 96090,
+                    "kse_code": 9,
+                    "mark_world_company": 0,
+                    "mark_state_monopoly": 0,
+                    "mark_natural_monopoly": 0,
+                    "mark_patronymic_producer": 0,
+                    "mark_patronymic_supplyer": 0,
+                    "mark_small_employer": 0,
+                    "is_single_org": 0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск участника по БИН/ИИН",
+        "id": "reestr-uchastnikov-poisk-uchastnika-po-bin-iin",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/subject/biin/201040000013"
+        },
+        "response": {
+          "description": "Ответ от сервиса:pid- ID участникаbin- БИНiin- ИИНinn- ИННunp- УНПparent_subject- БИН головной организацииparent_name_kz- Наименование на казахском языкеparent_name_ru- Наименование на русском языкеregdate- Дата свидетельства о государственной регистрацииcrdate- Дата регистрацииindex_date- Дата индексацииnumber_reg- Номер свидетельства о государственной регистрацииseries- Серия свидетельства (для ИП)name_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеfull_name_ru- Полное наименование на русском языкеfull_name_kz- Полное наименование на казахском языкеcountry_code- Страна по ЭЦПcustomer- Флаг Заказчик (1 - да, 0 - Нет)organizer- Флаг Организатор (1 - да, 0 - Нет)mark_national_company- Флаг Национальная компания (1 - да, 0 - Нет)ref_kopf_code- Код КОПФmark_assoc_with_disab- Флаг Объединение инвалидов (1 - да, 0 - Нет)system_id- ИД Системыsupplier- Флаг Поставщик (1 - да, 0 - Нет)type_supplier- Тип поставщика (1 - юридическое лицо, 2 - физическое лицо, 3 - ИП)krp_code- Размерность предприятия (КРП)oked_list- ОКЭДkse_code- Код сектора экономикиmark_world_company- Флаг Международная организация (1 - да, 0 - Нет)mark_state_monopoly- Флаг Субъект государственной монополии (1 - да, 0 - Нет)mark_natural_monopoly- Флаг Субъект естественной монополии (1 - да, 0 - Нет)mark_patronymic_producer- Флаг Отечественный товаропроизводитель (1 - да, 0 - Нет)mark_patronymic_supplyer- Флаг Отечественный поставщик (1 - да, 0 - Нет)mark_small_employer- Флаг Субъект малого предпринимательства (СМП) (1 - да, 0 - Нет)is_single_org- Флаг Единый организатор (1 - да, 0 - Нет)email- E-Mailphone- Телефонwebsite- Web сайтlast_update_date- Дата последнего редактированияqvazi- Флаг Квазисектораyear- Год регистрацииmark_resident- Флаг резидентаaddress- Адреса участникаid- Идентификаторpid- Идентификатор компанииref_source_code- Источникaddress_type- Тип адресаaddress- Адресkato_code- КАТОphone- Телефонcountry_code- Код страныdate_create- Дата созданияedit_date- Дата измененияadmins- Администраторы отчетностиid- Идентификатор заявкиsubject_id- Идентификатор организацииadmin_id- Идентификатор администратора отчетностиbin- БИН администратора отчетностиname_kz- Наименование администратора отчетности (каз)name_ru- Наименование администратора отчетности (рус)budget_kz- Вид бюджета (каз)budget_ru- Вид бюджета (рус)start_date- Дата начала действия заявки",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": "{\n    \"pid\": 8097,\n    \"bin\": \"201040000013\",\n    \"iin\": null,\n    \"inn\": null,\n    \"unp\": null,\n    \"parent_subject\": \"150740006678\",\n    \"parent_name_kz\": \"Қазақстан Республикасы Денсаулық сақтау министрлігі Қоғамдық денсаулық сақтау комитетінің \\\"Ұлттық сараптама орталығы\\\" шаруашылық жүргізу құқығындағы республикалық мемлекеттік кәсіпорны\",\n    \"parent_name_ru\": \"Республиканское государственное предприятие на праве хозяйственного ведения \\\"Национальный центр экспертизы\\\" Комитета охраны общественного здоровья Министерства здравоохранения Республики Казахстан\",\n    \"regdate\": \"2018-01-03 09:06:17\",\n    \"crdate\": \"2018-01-03 06:01:16\",\n    \"index_date\": \"2018-01-03 03:01:18\",\n    \"series\": null,\n    \"name_ru\": \"ГУ \\\"Министерство финансов Республики Казахстан\\\"\",\n    \"name_kz\": \"\\\"Қазақстан Республикасының қаржы Министрлігі\\\" ММ\",\n    \"full_name_ru\": null,\n    \"full_name_kz\": null,\n    \"email\": \"равыолраывлораолр454654\",\n    \"phone\": \"87172902\",\n    \"website\": \"minfin.gov.kz\",\n    \"last_update_date\": \"2018-01-03 11:12:17\",\n    \"country_code\": \"398\",\n    \"qvazi\": 0,\n    \"customer\": 1,\n    \"organizer\": 1,\n    \"mark_national_company\": 0,\n    \"ref_kopf_code\": \"ГУ\",\n    \"mark_assoc_with_disab\": 0,\n    \"year\": 2017,\n    \"mark_resident\": 1,\n    \"system_id\": 3,\n    \"supplier\": 1,\n    \"type_supplier\": 1,\n    \"krp_code\": 2,\n    \"oked_list\": 84111,\n    \"kse_code\": 1,\n    \"mark_world_company\": 0,\n    \"mark_state_monopoly\": 0,\n    \"mark_natural_monopoly\": 0,\n    \"mark_patronymic_producer\": 0,\n    \"mark_patronymic_supplyer\": 0,\n    \"mark_small_employer\": 0,\n    \"is_single_org\": 0,\n    \"total_address\": 1,\n    \"address\": [\n        {\n            \"id\": 6495,\n            \"pid\": 8097,\n            \"ref_source_code\": 2,\n            \"address_type\": 1,\n            \"address\": \"г.Астана, ул. Проспект ЖЕНИС, дом 11 кв. -\",\n            \"kato_code\": \"710000000\",\n            \"phone\": null,\n            \"country_code\": 398,\n            \"date_create\": \"2018-01-03 06:01:16\",\n            \"edit_date\": \"2018-01-03 11:12:17\",\n            \"index_date\": \"2018-01-03 03:01:18\"\n        },\n        {\n            \"id\": 99445,\n            \"pid\": 8097,\n            \"ref_source_code\": 1,\n            \"address_type\": 1,\n            \"address\": \"г.0, ул. 131,\",\n            \"kato_code\": \"711110000\",\n            \"phone\": null,\n            \"country_code\": 398,\n            \"date_create\": \"2018-01-03 20:09:16\",\n            \"edit_date\": \"2018-01-03 21:11:17\",\n            \"index_date\": \"2018-01-03 03:01:18\"\n        }\n    ]\n    \"admins\": [\n        {\n            \"id\": 131803,\n            \"subject_id\": 8097,\n            \"admin_id\": 10799,\n            \"bin\": \"940740001692\",\n            \"name_kz\": \"Қазақстан Республикасы Ұлттық экономика министрлігі Тұтынушылардың құқықтарын қорғау комитетінің \\\"Атырау обаға қарсы күрес станциясы\\\" республикалық мемлекеттік мекемесі\",\n            \"name_ru\": \"Республиканское государственное учреждение \\\"Атырауская противочумная станция\\\" Комитета по защите прав потребителей Министерства национальной экономики Республики Казахстан\",\n            \"budget_kz\": \"Республикалық бюджет\",\n            \"budget_ru\": \"Республиканский бюджет\",\n            \"start_date\": \"2019-09-11 17:15:19\"\n         }\n    ]\n}"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск участника по ИД",
+        "id": "reestr-uchastnikov-poisk-uchastnika-po-id",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/subject/8097"
+        },
+        "response": {
+          "description": "Ответ от сервиса:pid- ID участникаbin- БИНiin- ИИНinn- ИННunp- УНПparent_subject- БИН головной организацииparent_name_kz- Наименование на казахском языкеparent_name_ru- Наименование на русском языкеregdate- Дата свидетельства о государственной регистрацииcrdate- Дата регистрацииindex_date- Дата индексацииnumber_reg- Номер свидетельства о государственной регистрацииseries- Серия свидетельства (для ИП)name_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеfull_name_ru- Полное наименование на русском языкеfull_name_kz- Полное наименование на казахском языкеcountry_code- Страна по ЭЦПcustomer- Флаг Заказчик (1 - да, 0 - Нет)organizer- Флаг Организатор (1 - да, 0 - Нет)mark_national_company- Флаг Национальная компания (1 - да, 0 - Нет)ref_kopf_code- Код КОПФmark_assoc_with_disab- Флаг Объединение инвалидов (1 - да, 0 - Нет)system_id- ИД Системыsupplier- Флаг Поставщик (1 - да, 0 - Нет)type_supplier- Тип поставщика (1 - юридическое лицо, 2 - физическое лицо, 3 - ИП)krp_code- Размерность предприятия (КРП)oked_list- ОКЭДkse_code- Код сектора экономикиmark_world_company- Флаг Международная организация (1 - да, 0 - Нет)mark_state_monopoly- Флаг Субъект государственной монополии (1 - да, 0 - Нет)mark_natural_monopoly- Флаг Субъект естественной монополии (1 - да, 0 - Нет)mark_patronymic_producer- Флаг Отечественный товаропроизводитель (1 - да, 0 - Нет)mark_patronymic_supplyer- Флаг Отечественный поставщик (1 - да, 0 - Нет)mark_small_employer- Флаг Субъект малого предпринимательства (СМП) (1 - да, 0 - Нет)is_single_org- Флаг Единый организатор (1 - да, 0 - Нет)email- E-Mailphone- Телефонwebsite- Web сайтlast_update_date- Дата последнего редактированияqvazi- Флаг Квазисектораyear- Год регистрацииmark_resident- Флаг резидентаaddress- Адреса участникаid- Идентификаторpid- Идентификатор компанииref_source_code- Источникaddress_type- Тип адресаaddress- Адресkato_code- КАТОphone- Телефонcountry_code- Код страныdate_create- Дата созданияedit_date- Дата измененияadmins- Администраторы отчетностиid- Идентификатор заявкиsubject_id- Идентификатор организацииadmin_id- Идентификатор администратора отчетностиbin- БИН администратора отчетностиname_kz- Наименование администратора отчетности (каз)name_ru- Наименование администратора отчетности (рус)budget_kz- Вид бюджета (каз)budget_ru- Вид бюджета (рус)start_date- Дата начала действия заявки",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": "{\n    \"pid\": 8097,\n    \"bin\": \"201040000013\",\n    \"iin\": null,\n    \"inn\": null,\n    \"unp\": null,\n    \"parent_subject\": \"150740006678\",\n    \"parent_name_kz\": \"Қазақстан Республикасы Денсаулық сақтау министрлігі Қоғамдық денсаулық сақтау комитетінің \\\"Ұлттық сараптама орталығы\\\" шаруашылық жүргізу құқығындағы республикалық мемлекеттік кәсіпорны\",\n    \"parent_name_ru\": \"Республиканское государственное предприятие на праве хозяйственного ведения \\\"Национальный центр экспертизы\\\" Комитета охраны общественного здоровья Министерства здравоохранения Республики Казахстан\",\n    \"regdate\": \"2018-01-03 09:06:17\",\n    \"crdate\": \"2018-01-03 06:01:16\",\n    \"index_date\": \"2018-01-03 03:01:18\",\n    \"series\": null,\n    \"name_ru\": \"ГУ \\\"Министерство финансов Республики Казахстан\\\"\",\n    \"name_kz\": \"\\\"Қазақстан Республикасының қаржы Министрлігі\\\" ММ\",\n    \"full_name_ru\": null,\n    \"full_name_kz\": null,\n    \"email\": \"равыолраывлораолр454654\",\n    \"phone\": \"87172902\",\n    \"website\": \"minfin.gov.kz\",\n    \"last_update_date\": \"2018-01-03 11:12:17\",\n    \"country_code\": \"398\",\n    \"qvazi\": 0,\n    \"customer\": 1,\n    \"organizer\": 1,\n    \"mark_national_company\": 0,\n    \"ref_kopf_code\": \"ГУ\",\n    \"mark_assoc_with_disab\": 0,\n    \"year\": 2017,\n    \"mark_resident\": 1,\n    \"system_id\": 3,\n    \"supplier\": 1,\n    \"type_supplier\": 1,\n    \"krp_code\": 2,\n    \"oked_list\": 84111,\n    \"kse_code\": 1,\n    \"mark_world_company\": 0,\n    \"mark_state_monopoly\": 0,\n    \"mark_natural_monopoly\": 0,\n    \"mark_patronymic_producer\": 0,\n    \"mark_patronymic_supplyer\": 0,\n    \"mark_small_employer\": 0,\n    \"is_single_org\": 0,\n    \"total_address\": 1,\n    \"address\": [\n        {\n            \"id\": 6495,\n            \"pid\": 8097,\n            \"ref_source_code\": 2,\n            \"address_type\": 1,\n            \"address\": \"г.Астана, ул. Проспект ЖЕНИС, дом 11 кв. -\",\n            \"kato_code\": \"710000000\",\n            \"phone\": null,\n            \"country_code\": 398,\n            \"date_create\": \"2018-01-03 06:01:16\",\n            \"edit_date\": \"2018-01-03 11:12:17\",\n            \"index_date\": \"2018-01-03 03:01:18\"\n        },\n        {\n            \"id\": 99445,\n            \"pid\": 8097,\n            \"ref_source_code\": 1,\n            \"address_type\": 1,\n            \"address\": \"г.0, ул. 131,\",\n            \"kato_code\": \"711110000\",\n            \"phone\": null,\n            \"country_code\": 398,\n            \"date_create\": \"2018-01-03 20:09:16\",\n            \"edit_date\": \"2018-01-03 21:11:17\",\n            \"index_date\": \"2018-01-03 03:01:18\"\n        }\n    ]\n    \"admins\": [\n        {\n            \"id\": 131803,\n            \"subject_id\": 8097,\n            \"admin_id\": 10799,\n            \"bin\": \"940740001692\",\n            \"name_kz\": \"Қазақстан Республикасы Ұлттық экономика министрлігі Тұтынушылардың құқықтарын қорғау комитетінің \\\"Атырау обаға қарсы күрес станциясы\\\" республикалық мемлекеттік мекемесі\",\n            \"name_ru\": \"Республиканское государственное учреждение \\\"Атырауская противочумная станция\\\" Комитета по защите прав потребителей Министерства национальной экономики Республики Казахстан\",\n            \"budget_kz\": \"Республикалық бюджет\",\n            \"budget_ru\": \"Республиканский бюджет\",\n            \"start_date\": \"2019-09-11 17:15:19\"\n         }\n    ]\n}"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение адресов компании",
+        "id": "reestr-uchastnikov-poluchenie-adresov-kompanii",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/subject/biin/201040000013/address"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ИД записиpid- ИД компанииref_source_code- Источник данныхaddress_type- Тип адресаaddress- Адресkato_code- КАТОphone- Телефонcountry_code- Код страныdate_create- Дата создания записиedit_date- Дата изменения записиindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": "{\n    \"total\": 2,\n    \"limit\": 50,\n    \"next_page\": \"\",\n    \"items\": [\n        {\n            \"id\": 99445,\n            \"pid\": 8097,\n            \"ref_source_code\": 1,\n            \"address_type\": 1,\n            \"address\": \"г.0, ул. 131,\",\n            \"kato_code\": \"711110000\",\n            \"phone\": null,\n            \"country_code\": 398,\n            \"date_create\": \"2018-01-03 20:09:16\",\n            \"edit_date\": \"2018-01-03 21:11:17\",\n            \"index_date\": \"2018-01-03 03:01:18\n        }\n    ]\n}"
+            },
+            {
+              "content_type": "",
+              "body": {
+                "name": "Not Found",
+                "message": "Компания не найдена",
+                "code": 0,
+                "status": 404,
+                "type": "yii\\web\\NotFoundHttpException"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение сотрудников компании",
+        "id": "reestr-uchastnikov-poluchenie-sotrudnikov-kompanii",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/subject/biin/201040000013/employees"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ID пользователяpid- ИД компанииiin- ИИНresident- Идентификатор нерезидента по ЭЦПfio- Фамилия Имя Отчествоdisabled- Признак заблокированrole- Признак руководителяsys_role_id- Роль (Массив ролей)start_date- Дата действия сend_date- Дата действия поedit_date- Дата изменения записиindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 11,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 13983,
+                    "pid": 8097,
+                    "iin": "860803402373",
+                    "resident": 1,
+                    "fio": "КУМАРОВА ЗУХРА КУМАРОВНА",
+                    "disabled": 0,
+                    "role": 2,
+                    "sys_role_id": 6,
+                    "start_date": "2018-01-03 06:01:16",
+                    "edit_date": "2018-01-03 06:01:16",
+                    "end_date": "1999-01-01 00:00:00",
+                    "index_date": "2018-01-03 03:01:18"
+                  }
+                ]
+              }
+            },
+            {
+              "content_type": "",
+              "body": {
+                "name": "Not Found",
+                "message": "Компания не найдена",
+                "code": 0,
+                "status": 404,
+                "type": "yii\\web\\NotFoundHttpException"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр недобросовестных поставщиков",
+        "id": "reestr-nedobrosovestnykh-postavshchikov-reestr-nedobrosovestnykh-postavshchikov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/rnu"
+        },
+        "response": {
+          "description": "Ответ от сервиса:pid- ID участникаsupplier_biin- БИН/ИИН Участникаsupplier_innunp- ИНН/УНП Участникаsupplier_name_ru- Наименование участника на русском языкеsupplier_name_kz- Наименование участника на казахском языкеkato_list- Массив кодов КАТОindex_date- Дата индексации объектаsystem_id- Идентификатор системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 4,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": "5249",
+                    "pid": "9142",
+                    "supplier_biin": "070740007153",
+                    "supplier_innunp": null,
+                    "supplier_name_ru": "ТОО \"ҚазМұнайГаз Өнімдері\"",
+                    "supplier_name_kz": "\"ҚазМұнайГаз Өнімдері\" ЖШС",
+                    "kato_list": [
+                      "710000000"
+                    ],
+                    "system_id": 3
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Расширенный реестр заявок на включение РНУ поставщика",
+        "id": "reestr-nedobrosovestnykh-postavshchikov-rasshirennyi-reestr-zaiavok-na-vkliuchenie-rnu-postavshchika",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/rnu/890410350731"
+        },
+        "response": {
+          "description": "Ответ от сервиса:pid- ID участникаcustomer_name_ru- Наименование заказчика на русском языкеcustomer_name_kz- Наименование заказчика на казахском языкеcustomer_biin- БИН/ИИН Заказчикаsupplier_name_ru- Наименование участника на русском языкеsupplier_name_kz- Наименование участника на казахском языкеsupplier_biin- БИН/ИИН Участникаsupplier_innunp- ИНН/УНП Участникаsupplier_head_name_kz- Наименование головной компании участника на казахском языкеsupplier_head_name_ru- Наименование головной компании участника на русском языкеsupplier_head_biin- БИН/ИИН головной компании участникаcourt_decision- Номер решения суда/уполномоченного органаcourt_decision_date- Дата решения суда/уполномоченного органаstart_date- Дата и время включения заявки УОend_date- Дата окончания срока включения в РНУref_reason_id- ИД справочника причины включения в РНУkato_list- Массив кодов КАТОindex_date- Дата индексации объектаsystem_id- Идентификатор системы:founders- Список учредителей на момент включения в РНУhead_fio- ФИО учредителя/руководителяhead_biin- БИН/ИИНhead_innunp- ИНН/УНПhead_name_ru- Наименование юридического лица на русском языкеhead_name_kz- Наименование юридического лица на казахском языкеhead_type- Тип учредителя:1 - Юридическое лицо2 - Учредитель (физическое лицо)3 - Руководитель",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": "5249",
+                    "pid": 1831,
+                    "customer_name_ru": "АО \"Центр электронной коммерции\"",
+                    "customer_name_kz": "\"Электрондық коммерция орталығы\" АҚ",
+                    "customer_biin": "071140005693",
+                    "supplier_name_ru": "ТОО \"ҚазМұнайГаз Өнімдері\"",
+                    "supplier_name_kz": "\"ҚазМұнайГаз Өнімдері\" ЖШС",
+                    "supplier_biin": "070740007153",
+                    "supplier_innunp": null,
+                    "supplier_head_name_kz": null,
+                    "supplier_head_name_ru": null,
+                    "supplier_head_biin": null,
+                    "court_decision": "23123123",
+                    "court_decision_date": "2018-01-05 07:09:17",
+                    "start_date": "2018-01-05 08:09:17",
+                    "end_date": "2018-01-05 08:09:19",
+                    "ref_reason_id": 1,
+                    "index_date": "2018-01-05 05:01:18",
+                    "system_id": 3,
+                    "kato_list": [
+                      710000000
+                    ],
+                    "founders": null
+                  }
+                ]
+              }
+            },
+            {
+              "content_type": "",
+              "body": {
+                "name": "Not Found",
+                "message": "Поставщик не найден в реестре",
+                "code": 0,
+                "status": 404,
+                "type": "yii\\web\\NotFoundHttpException"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр заказчиков",
+        "id": "reestr-godovykh-planov-reestr-zakazchikov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/plans"
+        },
+        "response": {
+          "description": "Ответ от сервиса:pid- ИД Заказчикаbin- БИН Заказчикаname_kz- Наименование заказчика на казахском языкеname_ru- Наименование заказчика на русском языкеdoc_count- Количество пунктов плана",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 19236,
+                "limit": 50,
+                "next_page": "/v3/plans?page=next&search_after=32636",
+                "items": [
+                  {
+                    "pid": 54126,
+                    "bin": "031040007024",
+                    "name_ru": "РГУ \"Войсковая часть 01098\" Министерства обороны Республики Казахстан",
+                    "name_kz": "Қазақстан Республикасы Қорғаныс министрлігінің \"01098 әскери бөлімі\" РММ",
+                    "doc_count": 0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр пунктов плана по БИН заказчика",
+        "id": "reestr-godovykh-planov-reestr-punktov-plana-po-bin-zakazchika",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/plans/030540004957"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ИД пункта планаplan_act_id- Идентификатор актаplan_act_number- Номер актаref_plan_status_id- Статус Годового планаplan_fin_year- Финансовый год годового планаplan_preliminary- Признак предварительного плана на следующий финансовый годrootrecord_id- Ид родительского пункта планаsys_subjects_id- ИД Заказчикаsubject_biin- БИН/ИИН заказчикаname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеref_trade_methods_id- Код способа закупки  (плановый)ref_units_code- Код единицы измеренияcount- Количество / объемprice- Цена за единицуamount- Общая сумма, утвержденная для закупкиref_months_id- Планируемый срок закупкиref_pln_point_status_id- Статус пункта планаpln_point_year- Финансовый год в пункте планаref_subject_types_id- Код вида предмета закупкиref_enstru_code- КПВЭД - КТРУref_finsource_id- Код источника финансированияref_abp_code- Код администратора бюджетной программыdate_approved- Дата приказаis_qvazi- Признак субъект/не субъект ГЗ (квазисектор)  0 - субъект ГЗ, 1 - не субъект ГЗdate_create- Дата создания записиtimestamp- Дата изменения записиsystem_id- ИД системыref_point_type_id- Код типа пункта планаdesc_ru- Краткая характеристика на русском языкеdesc_kz- Краткая характеристика на казахском языкеextra_desc_ru- Дополнительное описание на русском языкеextra_desc_kz- Дополнительное описание на казахском языкеsum_1- Планируемая сумма на 1 годsum_2- Планируемая сумма на 2 годsum_3- Планируемая сумма на 3 годsupply_date_ru- Срок поставкиprepayment- Размер авансового платежа %ref_justification_id- Обоснование применения способа закупкиref_amendment_agreem_type_id- Вид дополнительного соглашенияref_amendm_agreem_justif_id- ИД основания создания дополнительного соглашенияcontract_prev_point_id- Номер пункта плана в договореdisable_person_id- Признаки ограничений закупкиtransfer_sys_subjects_id- ИД филиала (кому передано)transfer_type- Тип передачи планаref_budget_type_id- Код вида бюджетаsubject_name_kz- Наименование заказчика на государственном языкеsubject_name_ru- Наименование заказчика на русском языкеkato- Места поставкиref_kato_code- ИД КАТОref_countries_code- ИД Страныfull_delivery_place_name_ru- Полный адрес поставки на русском языкеfull_delivery_place_name_kz- Полный адрес поставки на казахском языкеcount- Количествоspec- Спецификацияref_ekrb_id- ИД справочника ЭКРБcount- Количествоprice- Ценаref_fkrb_subprogram_id- Код подпрограммыref_fkrb_id- ИД справочника ФКРБamount- Сумма по спецификеref_fkrb_program_id- Код программы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 80,
+                "limit": 50,
+                "next_page": "/v3/plans/990440008608?page=next&search_after=2562588",
+                "items": [
+                  {
+                    "id": 2981245,
+                    "plan_act_id": 68644,
+                    "plan_act_number": "05",
+                    "ref_plan_status_id": 3,
+                    "plan_fin_year": 2016,
+                    "plan_preliminary": 0,
+                    "rootrecord_id": 2562599,
+                    "sys_subjects_id": 48586,
+                    "subject_biin": "990440008608",
+                    "name_ru": "Услуги телефонной связи",
+                    "name_kz": "Услуги телефонной связи",
+                    "ref_trade_methods_id": 23,
+                    "ref_units_code": 5114,
+                    "count": 1,
+                    "price": 22810,
+                    "amount": 22810,
+                    "ref_months_id": 2,
+                    "ref_pln_point_status_id": 310,
+                    "pln_point_year": 2016,
+                    "ref_subject_types_id": 3,
+                    "ref_enstru_code": "61.10.11.06.01.00.00",
+                    "ref_finsource_id": 1,
+                    "ref_abp_code": 360,
+                    "createdin_act_id": 68644,
+                    "date_approved": "2018-02-03 05:02:16",
+                    "is_qvazi": 0,
+                    "date_create": "2018-02-03 05:02:16",
+                    "timestamp": "2018-02-03 05:02:16",
+                    "system_id": 3,
+                    "ref_point_type_id": 1,
+                    "desc_ru": "Услуги фиксированной местной, междугородней, международной телефонной связи  - доступ и пользование",
+                    "desc_kz": "Услуги фиксированной местной, междугородней, международной телефонной связи  - доступ и пользование",
+                    "extra_desc_ru": "услуги телефонной связи",
+                    "extra_desc_kz": "телефондық байланыс қызметі",
+                    "sum_1": 22810,
+                    "sum_2": 0,
+                    "sum_3": 0,
+                    "supply_date_ru": "Келісім-шартқа қол қойғаннан кейін бір жыл ішінде",
+                    "prepayment": 0,
+                    "ref_justification_id": 2,
+                    "ref_amendment_agreem_type_id": 0,
+                    "ref_amendm_agreem_justif_id": 0,
+                    "contract_prev_point_id": 0,
+                    "disable_person_id": 0,
+                    "transfer_sys_subjects_id": 0,
+                    "transfer_type": 0,
+                    "ref_budget_type_id": 4,
+                    "kato": [
+                      {
+                        "id": 3256929,
+                        "pln_points_id": 2981245,
+                        "ref_kato_code": "751510000",
+                        "ref_countries_code": "398",
+                        "full_delivery_place_name_ru": "г.Алматы, Жетысуский район г.Алматы,пр№Райымбека , дом №219Б",
+                        "full_delivery_place_name_kz": "Алматы қ., Жетісу ауданы Алматы қаласы, Райымбек даңғылы, № 219Б үй",
+                        "count": 1,
+                        "system_id": 3,
+                        "index_date": "2018-02-22 12:08:18"
+                      }
+                    ],
+                    "spec": [
+                      {
+                        "id": 1838247,
+                        "pln_points_id": 2981245,
+                        "ref_ekrb_id": 889,
+                        "count": 1,
+                        "price": 22810.32,
+                        "ref_fkrb_subprogram_id": 740997,
+                        "ref_fkrb_id": 740997,
+                        "amount": 22810.32,
+                        "ref_fkrb_program_id": 0,
+                        "system_id": 3,
+                        "index_date": "2018-02-22 12:18:29"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение одного пункта плана",
+        "id": "reestr-godovykh-planov-poluchenie-odnogo-punkta-plana",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/plans/view/4249088"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ИД пункта планаplan_act_id- Идентификатор актаplan_act_number- Номер актаref_plan_status_id- Статус Годового планаplan_fin_year- Финансовый год годового планаplan_preliminary- Признак предварительного плана на следующий финансовый годrootrecord_id- Ид родительского пункта планаsys_subjects_id- ИД Заказчикаsubject_biin- БИН/ИИН заказчикаname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеref_trade_methods_id- Код способа закупки  (плановый)ref_units_code- Код единицы измеренияcount- Количество / объемprice- Цена за единицуamount- Общая сумма, утвержденная для закупкиref_months_id- Планируемый срок закупкиref_pln_point_status_id- Статус пункта планаpln_point_year- Финансовый год в пункте планаref_subject_types_id- Код вида предмета закупкиref_enstru_code- КПВЭД - КТРУref_finsource_id- Код источника финансированияref_abp_code- Код администратора бюджетной программыdate_approved- Дата приказаis_qvazi- Признак субъект/не субъект ГЗ (квазисектор)  0 - субъект ГЗ, 1 - не субъект ГЗdate_create- Дата создания записиtimestamp- Дата изменения записиsystem_id- ИД системыref_point_type_id- Код типа пункта планаdesc_ru- Краткая характеристика на русском языкеdesc_kz- Краткая характеристика на казахском языкеextra_desc_ru- Дополнительное описание на русском языкеextra_desc_kz- Дополнительное описание на казахском языкеsum_1- Планируемая сумма на 1 годsum_2- Планируемая сумма на 2 годsum_3- Планируемая сумма на 3 годsupply_date_ru- Срок поставкиprepayment- Размер авансового платежа %ref_justification_id- Обоснование применения способа закупкиref_amendment_agreem_type_id- Вид дополнительного соглашенияref_amendm_agreem_justif_id- ИД основания создания дополнительного соглашенияcontract_prev_point_id- Номер пункта плана в договореdisable_person_id- Признаки ограничений закупкиtransfer_sys_subjects_id- ИД филиала (кому передано)transfer_type- Тип передачи планаref_budget_type_id- Код вида бюджетаsubject_name_kz- Наименование заказчика на государственном языкеsubject_name_ru- Наименование заказчика на русском языкеkato- Места поставкиref_kato_code- ИД КАТОref_countries_code- ИД Страныfull_delivery_place_name_ru- Полный адрес поставки на русском языкеfull_delivery_place_name_kz- Полный адрес поставки на казахском языкеcount- Количествоspec- Спецификацияref_ekrb_id- ИД справочника ЭКРБcount- Количествоprice- Ценаref_fkrb_subprogram_id- Код подпрограммыref_fkrb_id- ИД справочника ФКРБamount- Сумма по спецификеref_fkrb_program_id- Код программы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": "{\n    \"id\": 3876921,\n    \"plan_act_id\": 95411,\n    \"plan_act_number\": \"1\",\n    \"ref_plan_status_id\": 3,\n    \"plan_fin_year\": 2016,\n    \"plan_preliminary\": 0,\n    \"rootrecord_id\": 3876921,\n    \"sys_subjects_id\": 54126,\n    \"subject_biin\": \"031040007024\",\n    \"name_ru\": \"Услуги по печатанию этикеток и ярлыков\",\n    \"name_kz\": \"Услуги по печатанию этикеток и ярлыков\",\n    \"ref_trade_methods_id\": 23,\n    \"ref_units_code\": 5114,\n    \"count\": 1,\n    \"price\": 26,\n    \"amount\": 26,\n    \"ref_months_id\": 2,\n    \"ref_pln_point_status_id\": 310,\n    \"pln_point_year\": 2016,\n    \"ref_subject_types_id\": 3,\n    \"ref_enstru_code\": \"18.12.15.10.00.00.00\",\n    \"ref_finsource_id\": 1,\n    \"ref_abp_code\": 208,\n    \"createdin_act_id\": 95411,\n    \"date_approved\": \"2016-02-26 00:00:00\",\n    \"is_qvazi\": 0,\n    \"date_create\": \"2016-02-26 00:00:00\",\n    \"timestamp\": \"2016-02-26 00:00:00\",\n    \"system_id\": 3,\n    \"ref_point_type_id\": 1,\n    \"desc_ru\": \"Услуги по печатанию этикеток и ярлыков\",\n    \"desc_kz\": \"Услуги по печатанию этикеток и ярлыков\",\n    \"extra_desc_ru\": \"Услуги по печатанию стикеров\",\n    \"extra_desc_kz\": \"Услуги по печатанию стикеров\",\n    \"sum_1\": 26,\n    \"sum_2\": 0,\n    \"sum_3\": 0,\n    \"supply_date_ru\": \"февраль\",\n    \"prepayment\": 0,\n    \"ref_justification_id\": 42,\n    \"ref_amendment_agreem_type_id\": 0,\n    \"ref_amendm_agreem_justif_id\": 0,\n    \"contract_prev_point_id\": 0,\n    \"disable_person_id\": 0,\n    \"transfer_sys_subjects_id\": 0,\n    \"transfer_type\": 0,\n    \"ref_budget_type_id\": 1\n    \"kato\": [\n        {\n            \"id\": 4270517,\n            \"pln_points_id\": 3876921,\n            \"ref_kato_code\": \"116039100\",\n            \"ref_countries_code\": \"398\",\n            \"kato_full_name_ru\": \"Акмолинская область, Коргалжынский район, Коммунарский с.о., с.Майшукур\",\n            \"kato_full_name_kz\": \"Ақмола облысы, Қорғалжын ауданы, Коммунар а.о., Майшұқыр а.\",\n            \"full_delivery_place_name_ru\": \"Акмолинская область, Коргалжынский район, Коммунарский с.о., с.Майшукур а.Майшұқыр, Достық көшесі 4\",\n            \"full_delivery_place_name_kz\": \"Ақмола облысы, Қорғалжын ауданы, Коммунар а.о., Майшұқыр а. а.Майшұқыр, Достық көшесі 4\",\n            \"count\": 1\n        }\n    ],\n    \"spec\": [\n        {\n            \"id\": 4270517,\n            \"pln_points_id\": 3876921,\n            \"ref_ekrb_id\": 894,\n            \"spec_kat\": 48,\n            \"count\": 1,\n            \"price\": 31000,\n            \"ref_subprogram_code\": 744748,\n            \"ref_fkrb_id\": 744748,\n            \"amount\": 31000,\n            \"ref_program_code\": 0\n        }\n    ]\n}"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр пунктов плана",
+        "id": "reestr-godovykh-planov-reestr-punktov-plana",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/plans/all"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ИД пункта планаplan_act_id- Идентификатор актаplan_act_number- Номер актаref_plan_status_id- Статус Годового планаplan_fin_year- Финансовый год годового планаplan_preliminary- Признак предварительного плана на следующий финансовый годrootrecord_id- Ид родительского пункта планаsys_subjects_id- ИД Заказчикаsubject_biin- БИН/ИИН заказчикаname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеref_trade_methods_id- Код способа закупки  (плановый)ref_units_code- Код единицы измеренияcount- Количество / объемprice- Цена за единицуamount- Общая сумма, утвержденная для закупкиref_months_id- Планируемый срок закупкиref_pln_point_status_id- Статус пункта планаpln_point_year- Финансовый год в пункте планаref_subject_types_id- Код вида предмета закупкиref_enstru_code- КПВЭД - КТРУref_finsource_id- Код источника финансированияref_abp_code- Код администратора бюджетной программыdate_approved- Дата приказаis_qvazi- Признак субъект/не субъект ГЗ (квазисектор)  0 - субъект ГЗ, 1 - не субъект ГЗdate_create- Дата создания записиtimestamp- Дата изменения записиsystem_id- ИД системыref_point_type_id- Код типа пункта планаdesc_ru- Краткая характеристика на русском языкеdesc_kz- Краткая характеристика на казахском языкеextra_desc_ru- Дополнительное описание на русском языкеextra_desc_kz- Дополнительное описание на казахском языкеsum_1- Планируемая сумма на 1 годsum_2- Планируемая сумма на 2 годsum_3- Планируемая сумма на 3 годsupply_date_ru- Срок поставкиprepayment- Размер авансового платежа %ref_justification_id- Обоснование применения способа закупкиref_amendment_agreem_type_id- Вид дополнительного соглашенияref_amendm_agreem_justif_id- ИД основания создания дополнительного соглашенияcontract_prev_point_id- Номер пункта плана в договореdisable_person_id- Признаки ограничений закупкиtransfer_sys_subjects_id- ИД филиала (кому передано)transfer_type- Тип передачи планаref_budget_type_id- Код вида бюджетаsubject_name_kz- Наименование заказчика на государственном языкеsubject_name_ru- Наименование заказчика на русском языке",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 2215930,
+                "limit": 50,
+                "next_page": "/v3/plans/all?page=next&search_after=4501366",
+                "items": [
+                  {
+                    "id": 4502027,
+                    "plan_act_id": 176717,
+                    "plan_act_number": "Тест01",
+                    "ref_plan_status_id": 3,
+                    "plan_fin_year": 2018,
+                    "plan_preliminary": 0,
+                    "rootrecord_id": 4502027,
+                    "sys_subjects_id": 36695,
+                    "subject_biin": "141140001329",
+                    "name_ru": "Услуги по мониторингу местного содержания в закупках товаров, работ, услуг",
+                    "name_kz": "Услуги по мониторингу местного содержания в закупках товаров, работ, услуг",
+                    "ref_trade_methods_id": 2,
+                    "ref_units_code": 5114,
+                    "count": 1,
+                    "price": 20,
+                    "amount": 20,
+                    "ref_months_id": 8,
+                    "ref_pln_point_status_id": 2,
+                    "pln_point_year": 2018,
+                    "ref_subject_types_id": 3,
+                    "ref_enstru_code": "74.90.20.000.040.00.0777.000000000000",
+                    "ref_finsource_id": 1,
+                    "ref_abp_code": 217,
+                    "createdin_act_id": 176717,
+                    "date_approved": "2018-02-03 02:02:18",
+                    "is_qvazi": 0,
+                    "date_create": "2018-02-03 02:02:18",
+                    "timestamp": "2018-02-03 02:02:18",
+                    "system_id": 3,
+                    "ref_point_type_id": 1,
+                    "desc_ru": "Услуги по мониторингу местного содержания в закупках товаров, работ, услуг",
+                    "desc_kz": "Тауарларды, жұмыстар мен қызметтерді сатып алудағы жергілікті құрамды мониторингтеу бойынша қызметтер",
+                    "extra_desc_ru": "",
+                    "extra_desc_kz": "",
+                    "sum_1": 20,
+                    "sum_2": 0,
+                    "sum_3": 0,
+                    "supply_date_ru": "30",
+                    "prepayment": 30,
+                    "ref_justification_id": 0,
+                    "ref_amendment_agreem_type_id": 0,
+                    "ref_amendm_agreem_justif_id": 0,
+                    "contract_prev_point_id": 0,
+                    "disable_person_id": 0,
+                    "transfer_sys_subjects_id": 0,
+                    "transfer_type": 0,
+                    "ref_budget_type_id": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр мест поставки",
+        "id": "reestr-godovykh-planov-reestr-mest-postavki",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/plans/kato"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ИД записиpln_points_id- ИД пункта планаref_kato_code- ИД КАТОref_countries_code- ИД Страныfull_delivery_place_name_ru- Полный адрес поставки на русском языкеfull_delivery_place_name_kz- Полный адрес поставки на казахском языкеcount- Количествоindex_date- Дата индексации объектаsystem_id- Идентификатор системы:",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 944691,
+                "limit": 50,
+                "next_page": "/v3/plans/kato?page=next&search_after=4981919",
+                "items": [
+                  {
+                    "id": 4982937,
+                    "pln_points_id": 4505586,
+                    "ref_kato_code": "751110000",
+                    "ref_countries_code": "398",
+                    "full_delivery_place_name_ru": "г.Алматы, Алмалинский район ",
+                    "full_delivery_place_name_kz": "Алматы қ., Алмалы ауданы ",
+                    "count": 1,
+                    "system_id": 3,
+                    "index_date": "2018-02-22 12:08:18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр специфик",
+        "id": "reestr-godovykh-planov-reestr-spetsifik",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/plans/spec"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ИД записиpln_points_id- ИД пункта планаref_ekrb_id- ИД справочника ЭКРБcount- Количествоprice- Ценаref_fkrb_subprogram_id- Код подпрограммыref_fkrb_id- ИД справочника ФКРБamount- Сумма по спецификеref_fkrb_program_id- Код программыindex_date- Дата индексации объектаsystem_id- Идентификатор системы:",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 500,
+                "limit": 50,
+                "next_page": "/v3/plans/spec?page=next&search_after=226024",
+                "items": [
+                  {
+                    "id": 2023951,
+                    "pln_points_id": 3272115,
+                    "ref_ekrb_id": 887,
+                    "count": 26,
+                    "price": 2800,
+                    "ref_fkrb_subprogram_id": 743355,
+                    "ref_fkrb_id": 743355,
+                    "amount": 72800,
+                    "ref_fkrb_program_id": 0,
+                    "system_id": 3,
+                    "index_date": "2018-02-22 12:18:29"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Список снятых с публикации пунктов плана",
+        "id": "reestr-godovykh-planov-spisok-sniatykh-s-publikatsii-punktov-plana",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v2/plans/deleted"
+        },
+        "response": {
+          "description": "Ответ от сервиса:id- ИД записиindex_date- Дата индексации объектаis_deleted- Флаг удаления записиrootrecord_id- Ид родительского пункта плана",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 500,
+                "limit": 50,
+                "next_page": "/plans/spec?page=next&search_after=226024",
+                "items": [
+                  {
+                    "id": 4647411,
+                    "rootrecord_id": 4647411,
+                    "is_deleted": 1,
+                    "index_date": "2021-11-19 17:39:17"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение списка объявлений",
+        "id": "ob-iavleniia-o-gos-zakupkakh-poluchenie-spiska-ob-iavlenii",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД объявленияnumber_anno- Номер объявленияname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеref_trade_methods_id- Код способа закупкиpublish_date- Дата и время публикацииstart_date- Дата начала приема заявокend_date- Дата окончания приема заявокtotal_sum- Общая сумма запланированная для закупки (Сумма закупки)ref_buy_status_id- Статуса объявленияorg_bin- БИН Организатораsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": "{\n    \"total\": 171946,\n    \"limit\": 50,\n    \"next_page\": \"/v3/trd-buy?page=next&search_after=414621\",\n    \"items\": [\n        {\n            \"id\": 415500,\n            \"number_anno\": \"415500-1\",\n            \"name_ru\": \"Демонстрация Камеральный контроль (Аукцион)\",\n            \"name_kz\": \"Демонстрация Камеральный контроль (Аукцион)\",\n            \"org_bin\": \"050140006873\",\n            \"ref_trade_methods_id\": 7,\n            \"publish_date\": \"2018-01-08 05:01:18\",\n            \"start_date\": \"2018-01-08 05:01:18\",\n            \"end_date\": \"2018-01-08 05:01:18\",\n            \"total_sum\": 10000,\n            \"ref_buy_status_id\": 230,\n            \"index_date\": \"2018-01-08 08:01:18\",\n            \"system_id\": 3,\n        }\n    ]\n}"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение полного списка объявлений",
+        "id": "ob-iavleniia-o-gos-zakupkakh-poluchenie-polnogo-spiska-ob-iavlenii",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy/all"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД объявленияnumber_anno- Номер объявленияname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеtotal_sum- Общая сумма запланированная для закупки (Сумма закупки)count_lots- Количество лотов в объявленииref_trade_methods_id- Код способа закупкиref_subject_type_id- Вид предмета закупокcustomer_bin- БИН Заказчикаcustomer_pid- ИД Заказчикаorg_bin- БИН Организатораorg_pid- ИД Организатораref_buy_status_id- Статуса объявленияstart_date- Дата начала приема заявокrepeat_start_date- Срок начала повторного предоставления (дополнения) заявокrepeat_end_date- Срок окончания повторного предоставления (дополнения) заявокend_date- Дата окончания приема заявокpublish_date- Дата и время публикацииitogi_date_public- Дата публикации итоговref_type_trade_id- Тип закупки (первая, повторная)disable_person_id- Признак закупки инвалидыdiscus_start_date- Срок начала обсужденияdiscus_end_date- Срок окончания обсужденияid_supplier- ID поставщика из одного источникаbiin_supplier- БИН/ИИН поставщика из одного источникаparent_id- ИД исходного объявленияsingl_org_sign- Закупки Единого организатора КГЗ МФ РКis_light_industry- Закупка легкой и мебельной промышленностиis_construction_work- Закупка с признаком СМРcustomer_name_kz- Наименование заказчика на государственном языкеcustomer_name_ru- Наименование заказчика на русском языкеorg_name_kz- Наименование организатора на государственном языкеorg_name_ru- Наименование организатора на русском языкеsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 171946,
+                "limit": 50,
+                "next_page": "/v3/trd-buy/all?page=next&search_after=414621",
+                "items": [
+                  {
+                    "id": 415500,
+                    "number_anno": "415500-1",
+                    "name_ru": "Демонстрация Камеральный контроль (Аукцион)",
+                    "name_kz": "Демонстрация Камеральный контроль (Аукцион)",
+                    "total_sum": 10000,
+                    "count_lots": 1,
+                    "ref_trade_methods_id": 7,
+                    "ref_subject_type_id": 1,
+                    "customer_bin": null,
+                    "customer_pid": 0,
+                    "org_bin": "050140006873",
+                    "org_pid": 3861,
+                    "ref_buy_status_id": 230,
+                    "start_date": "2018-01-08 05:01:18",
+                    "repeat_start_date": "2018-01-08 05:01:18",
+                    "repeat_end_date": "2018-01-08 10:01:18",
+                    "end_date": "2018-01-08 05:01:18",
+                    "publish_date": "2018-01-08 05:01:18",
+                    "itogi_date_public": null,
+                    "ref_type_trade_id": 5,
+                    "disable_person_id": 0,
+                    "discus_start_date": "2018-01-08 05:01:18",
+                    "discus_end_date": "2018-01-08 05:01:18",
+                    "id_supplier": 7128,
+                    "biin_supplier": "941140001336",
+                    "parent_id": 0,
+                    "singl_org_sign": 0,
+                    "is_light_industry": 0,
+                    "is_construction_work": 0,
+                    "system_id": 3,
+                    "index_date": "2018-01-08 08:01:18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск объявлений по БИН организатора",
+        "id": "ob-iavleniia-o-gos-zakupkakh-poisk-ob-iavlenii-po-bin-organizatora",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy/bin/050140006873"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД объявленияnumber_anno- Номер объявленияname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеref_trade_methods_id- Код способа закупкиpublish_date- Дата и время публикацииstart_date- Дата начала приема заявокend_date- Дата окончания приема заявокtotal_sum- Общая сумма запланированная для закупки (Сумма закупки)ref_buy_status_id- Статуса объявленияorg_bin- БИН Организатораsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": "{\n    \"total\": 32,\n    \"limit\": 50,\n    \"next_page\": \"\",\n    \"items\": [\n        {\n            \"id\": 415500,\n            \"number_anno\": \"415500-1\",\n            \"name_ru\": \"Демонстрация Камеральный контроль (Аукцион)\",\n            \"name_kz\": \"Демонстрация Камеральный контроль (Аукцион)\",\n            \"org_bin\": \"050140006873\",\n            \"ref_trade_methods_id\": 7,\n            \"publish_date\": \"2018-01-08 05:01:18\",\n            \"start_date\": \"2018-01-08 05:01:18\",\n            \"end_date\": \"2018-01-08 05:01:18\",\n            \"total_sum\": 10000,\n            \"ref_buy_status_id\": 230,\n            \"index_date\": \"2018-01-08 08:01:18\",\n            \"system_id\": 3,\n        }\n    ]\n}"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Объявление детально по номеру объявления",
+        "id": "ob-iavleniia-o-gos-zakupkakh-ob-iavlenie-detal-no-po-nomeru-ob-iavleniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy/number-anno/415500-1"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД объявленияnumber_anno- Номер объявленияname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеtotal_sum- Общая сумма запланированная для закупки (Сумма закупки)count_lots- Количество лотов в объявленииref_trade_methods_id- Код способа закупкиref_subject_type_id- Вид предмета закупокcustomer_bin- БИН Заказчикаcustomer_pid- ИД Заказчикаorg_bin- БИН Организатораorg_pid- ИД Организатораref_buy_status_id- Статуса объявленияstart_date- Дата начала приема заявокrepeat_start_date- Срок начала повторного предоставления (дополнения) заявокrepeat_end_date- Срок окончания повторного предоставления (дополнения) заявокend_date- Дата окончания приема заявокpublish_date- Дата и время публикацииitogi_date_public- Дата публикации итоговref_type_trade_id- Тип закупки (первая, повторная)disable_person_id- Признак закупки инвалидыdiscus_start_date- Срок начала обсужденияdiscus_end_date- Срок окончания обсужденияid_supplier- ID поставщика из одного источникаbiin_supplier- БИН/ИИН поставщика из одного источникаparent_id- ИД исходного объявленияsingl_org_sign- Закупки Единого организатора КГЗ МФ РКis_light_industry- Закупка легкой и мебельной промышленностиis_construction_work- Закупка с признаком СМРcustomer_name_kz- Наименование заказчика на государственном языкеcustomer_name_ru- Наименование заказчика на русском языкеorg_name_kz- Наименование организатора на государственном языкеorg_name_ru- Наименование организатора на русском языкеsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 415500,
+                "number_anno": "415500-1",
+                "name_ru": "Демонстрация Камеральный контроль (Аукцион)",
+                "name_kz": "Демонстрация Камеральный контроль (Аукцион)",
+                "total_sum": 10000,
+                "count_lots": 1,
+                "ref_trade_methods_id": 7,
+                "ref_subject_type_id": 1,
+                "customer_bin": null,
+                "customer_pid": 0,
+                "org_bin": "050140006873",
+                "org_pid": 3861,
+                "ref_buy_status_id": 230,
+                "start_date": "2018-01-08 05:01:18",
+                "repeat_start_date": "2018-01-08 05:01:18",
+                "repeat_end_date": "2018-01-08 10:01:18",
+                "end_date": "2018-01-08 05:01:18",
+                "publish_date": "2018-01-08 05:01:18",
+                "itogi_date_public": null,
+                "ref_type_trade_id": 5,
+                "disable_person_id": 0,
+                "discus_start_date": "2018-01-08 05:01:18",
+                "discus_end_date": "2018-01-08 05:01:18",
+                "id_supplier": 7128,
+                "biin_supplier": "941140001336",
+                "parent_id": 0,
+                "singl_org_sign": 0,
+                "is_light_industry": 0,
+                "is_construction_work": 0,
+                "system_id": 3,
+                "index_date": "2018-01-08 08:01:18"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Объявление детально по ИД объявления",
+        "id": "ob-iavleniia-o-gos-zakupkakh-ob-iavlenie-detal-no-po-id-ob-iavleniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy/413120"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД объявленияnumber_anno- Номер объявленияname_ru- Наименование на русском языкеname_kz- Наименование на казахском языкеtotal_sum- Общая сумма запланированная для закупки (Сумма закупки)count_lots- Количество лотов в объявленииref_trade_methods_id- Код способа закупкиref_subject_type_id- Вид предмета закупокcustomer_bin- БИН Заказчикаcustomer_pid- ИД Заказчикаorg_bin- БИН Организатораorg_pid- ИД Организатораref_buy_status_id- Статуса объявленияstart_date- Дата начала приема заявокrepeat_start_date- Срок начала повторного предоставления (дополнения) заявокrepeat_end_date- Срок окончания повторного предоставления (дополнения) заявокend_date- Дата окончания приема заявокpublish_date- Дата и время публикацииitogi_date_public- Дата публикации итоговref_type_trade_id- Тип закупки (первая, повторная)disable_person_id- Признак закупки инвалидыdiscus_start_date- Срок начала обсужденияdiscus_end_date- Срок окончания обсужденияid_supplier- ID поставщика из одного источникаbiin_supplier- БИН/ИИН поставщика из одного источникаparent_id- ИД исходного объявленияsingl_org_sign- Закупки Единого организатора КГЗ МФ РКis_light_industry- Закупка легкой и мебельной промышленностиis_construction_work- Закупка с признаком СМРcustomer_name_kz- Наименование заказчика на государственном языкеcustomer_name_ru- Наименование заказчика на русском языкеorg_name_kz- Наименование организатора на государственном языкеorg_name_ru- Наименование организатора на русском языкеsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 415500,
+                "number_anno": "415500-1",
+                "name_ru": "Демонстрация Камеральный контроль (Аукцион)",
+                "name_kz": "Демонстрация Камеральный контроль (Аукцион)",
+                "total_sum": 10000,
+                "count_lots": 1,
+                "ref_trade_methods_id": 7,
+                "ref_subject_type_id": 1,
+                "customer_bin": null,
+                "customer_pid": 0,
+                "org_bin": "050140006873",
+                "org_pid": 3861,
+                "ref_buy_status_id": 230,
+                "start_date": "2018-01-08 05:01:18",
+                "repeat_start_date": "2018-01-08 05:01:18",
+                "repeat_end_date": "2018-01-08 10:01:18",
+                "end_date": "2018-01-08 05:01:18",
+                "publish_date": "2018-01-08 05:01:18",
+                "itogi_date_public": null,
+                "ref_type_trade_id": 5,
+                "disable_person_id": 0,
+                "discus_start_date": "2018-01-08 05:01:18",
+                "discus_end_date": "2018-01-08 05:01:18",
+                "id_supplier": 7128,
+                "biin_supplier": "941140001336",
+                "parent_id": 0,
+                "singl_org_sign": 0,
+                "is_light_industry": 0,
+                "is_construction_work": 0,
+                "system_id": 3,
+                "index_date": "2018-01-08 08:01:18"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Конкурсная комиссия (по ИД объявления)",
+        "id": "ob-iavleniia-o-gos-zakupkakh-konkursnaia-komissiia-po-id-ob-iavleniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy/415500/commission"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИДtrd_buy_id- ИД Объявленияfio- ФИОref_comm_roles_id- ИД ролиactive- Активностьbin- БИН Компанииsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 4,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 206676,
+                    "trd_buy_id": 415500,
+                    "fio": "АРЫН АХМЕТЖАН ӘЛИҰЛЫ",
+                    "ref_comm_roles_id": 2,
+                    "active": 1,
+                    "bin": "050140006873",
+                    "system_id": 3,
+                    "index_date": "2018-01-08 08:01:18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Информация о приостановлении объявления",
+        "id": "ob-iavleniia-o-gos-zakupkakh-informatsiia-o-priostanovlenii-ob-iavleniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy/414121/pause"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИДstatus- Статусdate_create- Дата созданияdate_pause- Дата приостановкиdecide_number- Номер решения пересмотра или отмены закупокdecide_date- Дата решения пересмотра или отмены закупокdecide_doc_kz- Наименование документа на государственном языкеdecide_doc_ru- Наименование документа на русском языкеstatus_name_ru- Статус на русском языкеstatus_name_kz- Статус на государственном языкеsolution_name_ru- Решение на русском языкеsolution_name_kz- Решение на государственном языкеlots- ИД лотовsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 414121,
+                    "status": 3,
+                    "date_create": "2017-12-19 12:03:41",
+                    "date_pause": "2017-12-19 12:03:41",
+                    "decide_number": "dfdfd",
+                    "decide_date": "2017-12-22 00:00:00",
+                    "decide_doc_kz": "фуываыпвпва",
+                    "decide_doc_ru": "впываывпавыавыа",
+                    "status_name_ru": "Решение вынесено",
+                    "status_name_kz": "Решение вынесено",
+                    "solution_name_ru": "Решение по госаудиту",
+                    "solution_name_kz": "Мемаудит бойынша шешім",
+                    "lots": {
+                      "id": [
+                        "835267",
+                        "835268"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Информация об отмене закупки по решению суда",
+        "id": "ob-iavleniia-o-gos-zakupkakh-informatsiia-ob-otmene-zakupki-po-resheniiu-suda",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-buy/18622/cancel"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИДnumber_decision- Номер решенияdate_decision- Дата решенияname_authority- Наименование органаdate_create- Дата созданияtrd_buy_id- ИД Объявленияact_type_name_ru- Видов акта отмены/приостановления закупки на русском языкеact_type_name_kz- Видов акта отмены/приостановления закупки на государственном языкеtype_actions_name_ru- Вид действия отмены/приостановления закупки на русском языкеtype_actions_name_kz- Вид действия отмены/приостановления закупки на государственном языкеtype_actions_code- Код действияsystem_id- ИД системыindex_dat- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 11302,
+                    "number_decision": "1",
+                    "date_decision": "2016-01-19 16:27:51",
+                    "name_authority": "гу",
+                    "date_create": "2016-01-19 16:28:33",
+                    "trd_buy_id": 18622,
+                    "act_type_name_ru": "Решение",
+                    "act_type_name_kz": "Решение kz",
+                    "type_actions_name_ru": "Отмена закупки по решению уполномоченных органов",
+                    "type_actions_name_kz": "Отмена закупки по решению уполномоченных органов",
+                    "type_actions_code": "canceledTrade",
+                    "system_id": 3,
+                    "index_date": "2019-02-01 10:35:58"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение списка заявок поставщиков",
+        "id": "reestr-zaiavok-postavshchikov-poluchenie-spiska-zaiavok-postavshchikov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/trd-app"
+        },
+        "response": {
+          "description": "Ответ от сервиса ((s)указывает на поле, доступное для поиска):id- ID заявки поставщика(s)buy_id- ID закупки(s)supplier_id- ID поставщика(s)cr_fio- ФИО пользователя, создавшего заявку(s)mod_fio- ФИО пользователя, внесшего изменения в заявку(s)supplier_bin_iin- БИН/ИИН поставщика(s)prot_id- ID протокола итогов(s)prot_number- Номер протокола итогов(s)date_apply- Дата и время подачи заявкиapp_lots- Список лотов, прикрепленных к заявке поставщикаid- ID лота, прикрепленного к заявкеapp_id- ID заявки поставщикаlot_id- ID лота закупки(s)point_list- Список ID пунктов планаstatus_id- ID статуса заявки поставщикаprice- Цена поставщика за единицуamount- Сумма поставщикаdiscount_value- Размер условной скидки в процентахdiscount_price- Цена с учетом условной скидкиoffers- Ценовые предложения поставщиков по пунктам плана лотаid- ID ценового предложенияpoint_id- ID пункта планаlot_id- ID лотаapp_lot_id- ID лота, прикрепленного к заявкеprice- Цена поставщика за единицуamount- Сумма поставщика",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 1657717,
+                    "buy_id": 501486,
+                    "supplier_id": 87649,
+                    "cr_fio": "ГАББАСОВ АМАНЖОЛ КАШАФЕДИНОВИЧ",
+                    "mod_fio": "ГАББАСОВ АМАНЖОЛ КАШАФЕДИНОВИЧ",
+                    "supplier_bin_iin": "571221300953",
+                    "prot_id": 490791,
+                    "prot_number": "490791",
+                    "date_apply": "2020-10-27 15:38:32.809000",
+                    "app_lots": [
+                      {
+                        "id": 1043713,
+                        "app_id": 1657717,
+                        "lot_id": 912728,
+                        "point_list": [
+                          "4623139"
+                        ],
+                        "status_id": 370,
+                        "price": 20000,
+                        "amount": 20000,
+                        "discount_value": 1.5,
+                        "discount_price": 19700,
+                        "offers": [
+                          {
+                            "id": 47089,
+                            "point_id": 4623139,
+                            "lot_id": 912728,
+                            "app_lot_id": 1043713,
+                            "price": 20000,
+                            "amount": 20000
+                          }
+                        ]
+                      },
+                      {
+                        "id": 1043712,
+                        "app_id": 1657717,
+                        "lot_id": 912729,
+                        "point_list": [
+                          "4623140"
+                        ],
+                        "status_id": 370,
+                        "price": 20000,
+                        "amount": 20000,
+                        "discount_value": 1.5,
+                        "discount_price": 19700,
+                        "offers": [
+                          {
+                            "id": 47088,
+                            "point_id": 4623140,
+                            "lot_id": 912729,
+                            "app_lot_id": 1043712,
+                            "price": 20000,
+                            "amount": 20000
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр лотов",
+        "id": "reestr-lotov-reestr-lotov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/lots"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД лотаlot_number- Номер лотаref_lot_status_id- Статус лотаlast_update_date- Дата последнего измененияunion_lots- Признак объединенного лотаcount- Общее количествоamount- Общая суммаname_ru- Наименование на русском языкеname_kz- Наименование на государственном языкеdescription_ru- Детальное описание на русском языкеdescription_kz- Детальное описание на государственном языкеcustomer_id- Идентификатор заказчикаcustomer_bin- БИН заказчикаtrd_buy_number_anno- Номер объявленияtrd_buy_id- Уникальный идентификатор объявленияdumping- Признак демпингаdumping_lot_price- Сумма для расчета демпингаpsd_sign- Признак работы. 1-работа с ТЭО/ПСД, 2-работа на разработку ТЭО/ПСДconsulting_services- Признак Консультационная услугаpoint_list- Список пунктов планаsingl_org_sign- Закупки Единого организатора КГЗ МФ РКis_light_industry- Закупка легкой и мебельной промышленностиis_construction_work- Закупка с признаком СМРdisable_person_id- Признак - Закупка среди организаций инвалидовcustomer_name_kz- Наименование заказчика на государственном языкеcustomer_name_ru- Наименование заказчика на русском языкеref_trade_methods_id- ИД Способа закупкиindex_date- Дата индексацииsystem_id- Уникальный идентификатор системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 546884,
+                "limit": 50,
+                "next_page": "/lots?page=next&search_after=836127",
+                "items": [
+                  {
+                    "id": 878849,
+                    "lot_number": "878844",
+                    "ref_lot_status_id": 220,
+                    "last_update_date": "2019-05-16 18:00:44",
+                    "union_lots": 1,
+                    "count": 0,
+                    "amount": 0,
+                    "name_ru": "Объединенный - Работа по среднему ремонту/",
+                    "name_kz": "Объединенный - Работа по среднему ремонту/",
+                    "description_ru": "просто так",
+                    "description_kz": "просто так",
+                    "customer_id": 11185,
+                    "customer_bin": "940340000421",
+                    "trd_buy_number_anno": "464562-2",
+                    "trd_buy_id": 464581,
+                    "dumping": 1,
+                    "dumping_lot_price": 0,
+                    "psd_sign": 4,
+                    "consulting_services": 0,
+                    "point_list": [
+                      4538160,
+                      4538159
+                    ],
+                    "singl_org_sign": 0,
+                    "is_light_industry": 0,
+                    "is_construction_work": 0,
+                    "disable_person_id": 0,
+                    "system_id": 3,
+                    "index_date": "2019-05-17 09:21:23"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск лотов по номеру объявления",
+        "id": "reestr-lotov-poisk-lotov-po-nomeru-ob-iavleniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/lots/number-anno/464562-2"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД лотаlot_number- Номер лотаref_lot_status_id- Статус лотаlast_update_date- Дата последнего измененияunion_lots- Признак объединенного лотаcount- Общее количествоamount- Общая суммаname_ru- Наименование на русском языкеname_kz- Наименование на государственном языкеdescription_ru- Детальное описание на русском языкеdescription_kz- Детальное описание на государственном языкеcustomer_id- Идентификатор заказчикаcustomer_bin- БИН заказчикаtrd_buy_number_anno- Номер объявленияtrd_buy_id- Уникальный идентификатор объявленияdumping- Признак демпингаdumping_lot_price- Сумма для расчета демпингаpsd_sign- Признак работы. 1-работа с ТЭО/ПСД, 2-работа на разработку ТЭО/ПСДconsulting_services- Признак Консультационная услугаpoint_list- Список пунктов планаsingl_org_sign- Закупки Единого организатора КГЗ МФ РКis_light_industry- Закупка легкой и мебельной промышленностиis_construction_work- Закупка с признаком СМРdisable_person_id- Признак - Закупка среди организаций инвалидовcustomer_name_kz- Наименование заказчика на государственном языкеcustomer_name_ru- Наименование заказчика на русском языкеref_trade_methods_id- ИД Способа закупкиindex_date- Дата индексацииsystem_id- Уникальный идентификатор системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 878849,
+                    "lot_number": "878844",
+                    "ref_lot_status_id": 220,
+                    "last_update_date": "2019-05-16 18:00:44",
+                    "union_lots": 1,
+                    "count": 0,
+                    "amount": 0,
+                    "name_ru": "Объединенный - Работа по среднему ремонту/",
+                    "name_kz": "Объединенный - Работа по среднему ремонту/",
+                    "description_ru": "просто так",
+                    "description_kz": "просто так",
+                    "customer_id": 11185,
+                    "customer_bin": "940340000421",
+                    "trd_buy_number_anno": "464562-2",
+                    "trd_buy_id": 464581,
+                    "dumping": 1,
+                    "dumping_lot_price": 0,
+                    "psd_sign": 4,
+                    "consulting_services": 0,
+                    "point_list": [
+                      4538160,
+                      4538159
+                    ],
+                    "singl_org_sign": 0,
+                    "is_light_industry": 0,
+                    "is_construction_work": 0,
+                    "disable_person_id": 0,
+                    "system_id": 3,
+                    "index_date": "2019-05-17 09:21:23"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск лотов по БИН заказичка",
+        "id": "reestr-lotov-poisk-lotov-po-bin-zakazichka",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/lots/bin/940340000421"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД лотаlot_number- Номер лотаref_lot_status_id- Статус лотаlast_update_date- Дата последнего измененияunion_lots- Признак объединенного лотаcount- Общее количествоamount- Общая суммаname_ru- Наименование на русском языкеname_kz- Наименование на государственном языкеdescription_ru- Детальное описание на русском языкеdescription_kz- Детальное описание на государственном языкеcustomer_id- Идентификатор заказчикаcustomer_bin- БИН заказчикаtrd_buy_number_anno- Номер объявленияtrd_buy_id- Уникальный идентификатор объявленияdumping- Признак демпингаdumping_lot_price- Сумма для расчета демпингаpsd_sign- Признак работы. 1-работа с ТЭО/ПСД, 2-работа на разработку ТЭО/ПСДconsulting_services- Признак Консультационная услугаpoint_list- Список пунктов планаsingl_org_sign- Закупки Единого организатора КГЗ МФ РКis_light_industry- Закупка легкой и мебельной промышленностиis_construction_work- Закупка с признаком СМРdisable_person_id- Признак - Закупка среди организаций инвалидовcustomer_name_kz- Наименование заказчика на государственном языкеcustomer_name_ru- Наименование заказчика на русском языкеref_trade_methods_id- ИД Способа закупкиindex_date- Дата индексацииsystem_id- Уникальный идентификатор системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 878849,
+                    "lot_number": "878844",
+                    "ref_lot_status_id": 220,
+                    "last_update_date": "2019-05-16 18:00:44",
+                    "union_lots": 1,
+                    "count": 0,
+                    "amount": 0,
+                    "name_ru": "Объединенный - Работа по среднему ремонту/",
+                    "name_kz": "Объединенный - Работа по среднему ремонту/",
+                    "description_ru": "просто так",
+                    "description_kz": "просто так",
+                    "customer_id": 11185,
+                    "customer_bin": "940340000421",
+                    "trd_buy_number_anno": "464562-2",
+                    "trd_buy_id": 464581,
+                    "dumping": 1,
+                    "dumping_lot_price": 0,
+                    "psd_sign": 4,
+                    "consulting_services": 0,
+                    "point_list": [
+                      4538160,
+                      4538159
+                    ],
+                    "singl_org_sign": 0,
+                    "is_light_industry": 0,
+                    "is_construction_work": 0,
+                    "disable_person_id": 0,
+                    "system_id": 3,
+                    "index_date": "2019-05-17 09:21:23"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Лот детально",
+        "id": "reestr-lotov-lot-detal-no",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/lots/878849"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД лотаlot_number- Номер лотаref_lot_status_id- Статус лотаlast_update_date- Дата последнего измененияunion_lots- Признак объединенного лотаcount- Общее количествоamount- Общая суммаname_ru- Наименование на русском языкеname_kz- Наименование на государственном языкеdescription_ru- Детальное описание на русском языкеdescription_kz- Детальное описание на государственном языкеcustomer_id- Идентификатор заказчикаcustomer_bin- БИН заказчикаtrd_buy_number_anno- Номер объявленияtrd_buy_id- Уникальный идентификатор объявленияdumping- Признак демпингаdumping_lot_price- Сумма для расчета демпингаpsd_sign- Признак работы. 1-работа с ТЭО/ПСД, 2-работа на разработку ТЭО/ПСДconsulting_services- Признак Консультационная услугаpoint_list- Список пунктов планаsingl_org_sign- Закупки Единого организатора КГЗ МФ РКis_light_industry- Закупка легкой и мебельной промышленностиis_construction_work- Закупка с признаком СМРdisable_person_id- Признак - Закупка среди организаций инвалидовcustomer_name_kz- Наименование заказчика на государственном языкеcustomer_name_ru- Наименование заказчика на русском языкеref_trade_methods_id- ИД Способа закупкиindex_date- Дата индексацииsystem_id- Уникальный идентификатор системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 878849,
+                "lot_number": "878844",
+                "ref_lot_status_id": 220,
+                "last_update_date": "2019-05-16 18:00:44",
+                "union_lots": 1,
+                "count": 0,
+                "amount": 0,
+                "name_ru": "Объединенный - Работа по среднему ремонту/",
+                "name_kz": "Объединенный - Работа по среднему ремонту/",
+                "description_ru": "просто так",
+                "description_kz": "просто так",
+                "customer_id": 11185,
+                "customer_bin": "940340000421",
+                "trd_buy_number_anno": "464562-2",
+                "trd_buy_id": 464581,
+                "dumping": 1,
+                "dumping_lot_price": 0,
+                "psd_sign": 4,
+                "consulting_services": 0,
+                "point_list": [
+                  4538160,
+                  4538159
+                ],
+                "singl_org_sign": 0,
+                "is_light_industry": 0,
+                "is_construction_work": 0,
+                "disable_person_id": 0,
+                "system_id": 3,
+                "index_date": "2019-05-17 09:21:23"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр договоров",
+        "id": "reestr-dogovorov-reestr-dogovorov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД Договораcontract_number- Номер Договораcontract_number_sys- Системный номер Договораtrd_buy_id- ИД объявленияtrd_buy_number_anno- Номер объявленияref_contract_type_id- ИД типа договораref_contract_status_id- ИД статуса договраcrdate- Дата созданияcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаcustomer_id- ИД Заказчикаcustomer_bin- БИН Заказчикаindex_date- Дата индексацииsystem_id- ИД системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 3726048,
+                "limit": 50,
+                "next_page": "/v3/contract?page=next&search_after=4996100",
+                "items": [
+                  {
+                    "id": 4998364,
+                    "contract_number": "9",
+                    "contract_number_sys": "070240006286/180009/00",
+                    "trd_buy_id": 0,
+                    "trd_buy_number_anno": null,
+                    "ref_contract_type_id": 1,
+                    "ref_contract_status_id": 190,
+                    "crdate": "2018-02-20 11:34:55",
+                    "contract_sum": 60000,
+                    "contract_sum_wnds": 60000,
+                    "supplier_id": 167688,
+                    "supplier_biin": "720101400997",
+                    "customer_id": 29891,
+                    "customer_bin": "070240006286",
+                    "index_date": "2018-02-20 11:52:05",
+                    "system_id": 3
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск договоров по номеру объявления",
+        "id": "reestr-dogovorov-poisk-dogovorov-po-nomeru-ob-iavleniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/number-anno/377439-1"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД Договораcontract_number- Номер Договораcontract_number_sys- Системный номер Договораtrd_buy_id- ИД объявленияref_contract_type_id- ИД типа договораtrd_buy_number_anno- Номер объявленияref_contract_status_id- ИД статуса договраcrdate- Дата созданияcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаcustomer_id- ИД Заказчикаcustomer_bin- БИН Заказчикаindex_date- Дата индексацииsystem_id- ИД системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 600790,
+                    "contract_number": "33",
+                    "contract_number_sys": "070540004220/160040/00",
+                    "trd_buy_id": 377439,
+                    "trd_buy_number_anno": "377439-1",
+                    "ref_contract_type_id": 1,
+                    "ref_contract_status_id": 190,
+                    "crdate": "2016-04-06 13:07:49",
+                    "contract_sum": 352800,
+                    "contract_sum_wnds": 352800,
+                    "supplier_id": 96816,
+                    "supplier_biin": "751002402448",
+                    "customer_id": 45931,
+                    "customer_bin": "070540004220",
+                    "index_date": "2018-02-20 11:52:05",
+                    "system_id": 3
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск договоров по БИН/ИИН поставщика",
+        "id": "reestr-dogovorov-poisk-dogovorov-po-bin-iin-postavshchika",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/supplier/881009350179"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД Договораcontract_number- Номер Договораcontract_number_sys- Системный номер Договораtrd_buy_id- ИД объявленияtrd_buy_number_anno- Наименование объявленияref_contract_type_id- ИД типа договораref_contract_status_id- ИД статуса договраcrdate- Дата созданияcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаcustomer_id- ИД Заказчикаcustomer_bin- БИН Заказчикаindex_date- Дата индексацииsystem_id- ИД системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 297631,
+                    "contract_number": "28",
+                    "contract_number_sys": "950140001068/160165/00",
+                    "trd_buy_id": 0,
+                    "trd_buy_number_anno": null,
+                    "ref_contract_type_id": 1,
+                    "ref_contract_status_id": 390,
+                    "crdate": "2016-02-22 16:33:36",
+                    "contract_sum": 72000,
+                    "contract_sum_wnds": 72000,
+                    "supplier_id": 87510,
+                    "supplier_biin": "881009350179",
+                    "customer_id": 35399,
+                    "customer_bin": "950140001068",
+                    "index_date": "2018-02-20 11:52:05",
+                    "system_id": 3
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Поиск договоров по БИН заказчика",
+        "id": "reestr-dogovorov-poisk-dogovorov-po-bin-zakazchika",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/customer/071140005693"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД Договораcontract_number- Номер Договораcontract_number_sys- Системный номер Договораtrd_buy_id- ИД объявленияtrd_buy_number_anno- Номер объявленияref_contract_type_id- ИД типа договораref_contract_status_id- ИД статуса договраcrdate- Дата созданияcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаcustomer_id- ИД Заказчикаcustomer_bin- БИН Заказчикаindex_date- Дата индексацииsystem_id- ИД системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 251,
+                "limit": 50,
+                "next_page": "/v3/contract/customer/071140005693?page=next&search_after=3970213",
+                "items": [
+                  {
+                    "id": 4884682,
+                    "contract_number": "27",
+                    "contract_number_sys": "071140005693/180028/00",
+                    "trd_buy_id": 0,
+                    "trd_buy_number_anno": null,
+                    "ref_contract_type_id": 1,
+                    "ref_contract_status_id": 190,
+                    "crdate": "2018-02-08 12:19:04",
+                    "contract_sum": 259500,
+                    "contract_sum_wnds": 259500,
+                    "supplier_id": 139278,
+                    "supplier_biin": "750606350244",
+                    "customer_id": 1831,
+                    "customer_bin": "071140005693",
+                    "index_date": "2018-02-20 11:52:05",
+                    "system_id": 3
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Детальная информация договора по номеру",
+        "id": "reestr-dogovorov-detal-naia-informatsiia-dogovora-po-nomeru",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/number/?number=89"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- Идентификаторparent_id- Ид предыдущего договораroot_id- Ид корневого договораtrd_buy_id- Ид Объявленияtrd_buy_number_anno- Номер объявленияref_amendm_agreem_justif_id- Причина внесения изменений в договорref_contract_status_id- Статусdeleted- Флаг удаления записиcrdate- Дата создания записиlast_update_date- Дата изменения записиsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаsupplier_bik- БИК поставщикаsupplier_iik- ИИК поставщикаsupplier_bank_name_kz- Наименвоание банка поставщика на казахском языкеsupplier_bank_name_ru- Наименвоание банка поставщика на русском языкеcontract_number- Номер договора, заполняемый пользователемsign_reason_doc_name- Наименование подтверждающего документаsign_reason_doc_date- Дата подтверждающего документаtrd_buy_itogi_date_public- Дата подведения итогов госзакупокcustomer_id- ИД заказчика ТРУcustomer_bin- БИН заказчика ТРУcustomer_bik- БИК заказчикаcustomer_iik- ИИК заказчикаcustomer_bank_name_kz- Наименвоание банка заказчика на казахском языкеcustomer_bank_name_ru- Наименвоание банка заказчика на русском языкеcontract_number_sys- Номер договора в системеfin_year- Финансовый годref_contract_agr_form_id- Форма заключения договораref_contract_year_type_id- Тип закупки (Тип закупки)ref_finsource_id- Источник финансированияref_currency_code- Код валюты договораcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsign_date- Дата заключения договораec_end_date- Срок действия договораplan_exec_date- Планируемая дата исполненияfakt_exec_date- Фактическая дата исполненияfakt_sum_wnds- Общая фактическая сумма договораcontract_end_date- Дата расторжения договораref_contract_cancel_id- Основание и причинаref_contract_type_id- Тип договораdescription_kz- Описание на казахском языкеdescription_ru- Описание на русском языкеfakt_trade_methods_id- Фактический способ закупкиec_customer_approve- Флаг “Согласован поставщиком”ec_supplier_approve- Флаг “Согласован заказчиком”contract_ms- Итоговая доля местного содержания по всему договору МСт (итоговая) (Местное содержание по договору, %)supplier_legal_address- Юридический адрес поставщикаcustomer_legal_address- Юридический адрес заказчикаpayments_terms_ru- Условия поставки на русском языкеpayments_terms_kz- Условия поставки на государственном языкеis_gu- Признак ГУexchange_rate- Курс валюты (для валютных договоров)report_status- Статус отчета о государственых закупках из одного источникаreport_created_at- Дата создания отчета о государственых закупках из одного источникаreport_sign_at- Дата подписания отчета о государственых закупках из одного источникаenforcement- Флаг с/без обеспечения - 1 - с обеспечением, 2 - без обеспеченияsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 409548,
+                "parent_id": 0,
+                "root_id": 409548,
+                "trd_buy_id": 243809,
+                "trd_buy_number_anno": "243809-1",
+                "ref_amendm_agreem_justif_id": [
+                  0
+                ],
+                "ref_contract_status_id": 455,
+                "deleted": 0,
+                "crdate": "2018-01-08 09:03:16",
+                "last_update_date": "2018-01-08 10:03:16",
+                "supplier_id": 69729,
+                "supplier_biin": "120440026517",
+                "supplier_bik": "KCJBKZKX",
+                "supplier_iik": "KZ138560000005175000",
+                "supplier_bank_name_kz": "\"Банк ЦентрКредит\" АҚ",
+                "supplier_bank_name_ru": "АО \"Банк ЦентрКредит\"",
+                "contract_number": "89",
+                "sign_reason_doc_name": "Итоговый протокол о проведении государственных закупок",
+                "sign_reason_doc_date": "2018-01-08 09:03:16",
+                "trd_buy_itogi_date_public": "2018-01-08 09:03:16",
+                "customer_id": 10950,
+                "customer_bin": "000140001536",
+                "customer_bik": "KKMFKZ2A",
+                "customer_iik": "92070101KSN0000000",
+                "customer_bank_name_kz": "\"ҚР Қаржы министрлігінің Қазынашылық Комитеті\" РММ",
+                "customer_bank_name_ru": "РГУ \"КОМИТЕТ КАЗНАЧЕЙСТВА МИНИСТЕРСТВА ФИНАНСОВ РК\"",
+                "contract_number_sys": "000140001536/160089/00",
+                "fin_year": 2016,
+                "ref_contract_agr_form_id": 1,
+                "ref_contract_year_type_id": 1,
+                "ref_finsource_id": 1,
+                "ref_currency_code": "KZT",
+                "contract_sum": 32032,
+                "contract_sum_wnds": 32032,
+                "sign_date": "2018-01-08 10:03:16",
+                "ec_end_date": "2016-12-31 00:00:00",
+                "plan_exec_date": "2018-01-08 02:04:16",
+                "fakt_exec_date": null,
+                "fakt_sum_wnds": 0,
+                "contract_end_date": null,
+                "ref_contract_cancel_id": 0,
+                "ref_contract_type_id": 1,
+                "description_kz": "автокөліктерге арналған майлар",
+                "description_ru": "автомобильные масла",
+                "fakt_trade_methods_id": 3,
+                "ec_customer_approve": 1,
+                "ec_supplier_approve": 1,
+                "contract_ms": 0,
+                "system_id": 3,
+                "index_date": "2018-01-08 08:01:18"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Детальная информация договора по системному номеру",
+        "id": "reestr-dogovorov-detal-naia-informatsiia-dogovora-po-sistemnomu-nomeru",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/number-sys/?number=000140001536/160089/00"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- Идентификаторparent_id- Ид предыдущего договораroot_id- Ид корневого договораtrd_buy_id- Ид Объявленияtrd_buy_number_anno- Номер объявленияref_amendm_agreem_justif_id- Причина внесения изменений в договорref_contract_status_id- Статусdeleted- Флаг удаления записиcrdate- Дата создания записиlast_update_date- Дата изменения записиsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаsupplier_bik- БИК поставщикаsupplier_iik- ИИК поставщикаsupplier_bank_name_kz- Наименвоание банка поставщика на казахском языкеsupplier_bank_name_ru- Наименвоание банка поставщика на русском языкеcontract_number- Номер договора, заполняемый пользователемsign_reason_doc_name- Наименование подтверждающего документаsign_reason_doc_date- Дата подтверждающего документаtrd_buy_itogi_date_public- Дата подведения итогов госзакупокcustomer_id- ИД заказчика ТРУcustomer_bin- БИН заказчика ТРУcustomer_bik- БИК заказчикаcustomer_iik- ИИК заказчикаcustomer_bank_name_kz- Наименвоание банка заказчика на казахском языкеcustomer_bank_name_ru- Наименвоание банка заказчика на русском языкеcontract_number_sys- Номер договора в системеfin_year- Финансовый годref_contract_agr_form_id- Форма заключения договораref_contract_year_type_id- Тип закупки (Тип закупки)ref_finsource_id- Источник финансированияref_currency_code- Код валюты договораcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsign_date- Дата заключения договораec_end_date- Срок действия договораplan_exec_date- Планируемая дата исполненияfakt_exec_date- Фактическая дата исполненияfakt_sum_wnds- Общая фактическая сумма договораcontract_end_date- Дата расторжения договораref_contract_cancel_id- Основание и причинаref_contract_type_id- Тип договораdescription_kz- Описание на казахском языкеdescription_ru- Описание на русском языкеfakt_trade_methods_id- Фактический способ закупкиec_customer_approve- Флаг “Согласован поставщиком”ec_supplier_approve- Флаг “Согласован заказчиком”contract_ms- Итоговая доля местного содержания по всему договору МСт (итоговая) (Местное содержание по договору, %)supplier_legal_address- Юридический адрес поставщикаcustomer_legal_address- Юридический адрес заказчикаpayments_terms_ru- Условия поставки на русском языкеpayments_terms_kz- Условия поставки на государственном языкеis_gu- Признак ГУexchange_rate- Курс валюты (для валютных договоров)report_status- Статус отчета о государственых закупках из одного источникаreport_created_at- Дата создания отчета о государственых закупках из одного источникаreport_sign_at- Дата подписания отчета о государственых закупках из одного источникаenforcement- Флаг с/без обеспечения - 1 - с обеспечением, 2 - без обеспеченияsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 409548,
+                "parent_id": 0,
+                "root_id": 409548,
+                "trd_buy_id": 243809,
+                "trd_buy_number_anno": "243809-1",
+                "ref_amendm_agreem_justif_id": [
+                  0
+                ],
+                "ref_contract_status_id": 455,
+                "deleted": 0,
+                "crdate": "2018-01-08 09:03:16",
+                "last_update_date": "2018-01-08 10:03:16",
+                "supplier_id": 69729,
+                "supplier_biin": "120440026517",
+                "supplier_bik": "KCJBKZKX",
+                "supplier_iik": "KZ138560000005175000",
+                "supplier_bank_name_kz": "\"Банк ЦентрКредит\" АҚ",
+                "supplier_bank_name_ru": "АО \"Банк ЦентрКредит\"",
+                "contract_number": "89",
+                "sign_reason_doc_name": "Итоговый протокол о проведении государственных закупок",
+                "sign_reason_doc_date": "2018-01-08 09:03:16",
+                "trd_buy_itogi_date_public": "2018-01-08 09:03:16",
+                "customer_id": 10950,
+                "customer_bin": "000140001536",
+                "customer_bik": "KKMFKZ2A",
+                "customer_iik": "92070101KSN0000000",
+                "customer_bank_name_kz": "\"ҚР Қаржы министрлігінің Қазынашылық Комитеті\" РММ",
+                "customer_bank_name_ru": "РГУ \"КОМИТЕТ КАЗНАЧЕЙСТВА МИНИСТЕРСТВА ФИНАНСОВ РК\"",
+                "contract_number_sys": "000140001536/160089/00",
+                "fin_year": 2016,
+                "ref_contract_agr_form_id": 1,
+                "ref_contract_year_type_id": 1,
+                "ref_finsource_id": 1,
+                "ref_currency_code": "KZT",
+                "contract_sum": 32032,
+                "contract_sum_wnds": 32032,
+                "sign_date": "2018-01-08 10:03:16",
+                "ec_end_date": "2016-12-31 00:00:00",
+                "plan_exec_date": "2018-01-08 02:04:16",
+                "fakt_exec_date": null,
+                "fakt_sum_wnds": 0,
+                "contract_end_date": null,
+                "ref_contract_cancel_id": 0,
+                "ref_contract_type_id": 1,
+                "description_kz": "автокөліктерге арналған майлар",
+                "description_ru": "автомобильные масла",
+                "fakt_trade_methods_id": 3,
+                "ec_customer_approve": 1,
+                "ec_supplier_approve": 1,
+                "contract_ms": 0,
+                "system_id": 3,
+                "index_date": "2018-01-08 08:01:18"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Детальная информация договора по ИД",
+        "id": "reestr-dogovorov-detal-naia-informatsiia-dogovora-po-id",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/409548"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- Идентификаторparent_id- Ид предыдущего договораroot_id- Ид корневого договораtrd_buy_id- Ид Объявленияtrd_buy_number_anno- Номер объявленияref_amendm_agreem_justif_id- Причина внесения изменений в договорref_contract_status_id- Статусdeleted- Флаг удаления записиcrdate- Дата создания записиlast_update_date- Дата изменения записиsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаsupplier_bik- БИК поставщикаsupplier_iik- ИИК поставщикаsupplier_bank_name_kz- Наименвоание банка поставщика на казахском языкеsupplier_bank_name_ru- Наименвоание банка поставщика на русском языкеcontract_number- Номер договора, заполняемый пользователемsign_reason_doc_name- Наименование подтверждающего документаsign_reason_doc_date- Дата подтверждающего документаtrd_buy_itogi_date_public- Дата подведения итогов госзакупокcustomer_id- ИД заказчика ТРУcustomer_bin- БИН заказчика ТРУcustomer_bik- БИК заказчикаcustomer_iik- ИИК заказчикаcustomer_bank_name_kz- Наименвоание банка заказчика на казахском языкеcustomer_bank_name_ru- Наименвоание банка заказчика на русском языкеcontract_number_sys- Номер договора в системеfin_year- Финансовый годref_contract_agr_form_id- Форма заключения договораref_contract_year_type_id- Тип закупки (Тип закупки)ref_finsource_id- Источник финансированияref_currency_code- Код валюты договораcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsign_date- Дата заключения договораec_end_date- Срок действия договораplan_exec_date- Планируемая дата исполненияfakt_exec_date- Фактическая дата исполненияfakt_sum_wnds- Общая фактическая сумма договораcontract_end_date- Дата расторжения договораref_contract_cancel_id- Основание и причинаref_contract_type_id- Тип договораdescription_kz- Описание на казахском языкеdescription_ru- Описание на русском языкеfakt_trade_methods_id- Фактический способ закупкиec_customer_approve- Флаг “Согласован поставщиком”ec_supplier_approve- Флаг “Согласован заказчиком”contract_ms- Итоговая доля местного содержания по всему договору МСт (итоговая) (Местное содержание по договору, %)supplier_legal_address- Юридический адрес поставщикаcustomer_legal_address- Юридический адрес заказчикаpayments_terms_ru- Условия поставки на русском языкеpayments_terms_kz- Условия поставки на государственном языкеis_gu- Признак ГУexchange_rate- Курс валюты (для валютных договоров)report_status- Статус отчета о государственых закупках из одного источникаreport_created_at- Дата создания отчета о государственых закупках из одного источникаreport_sign_at- Дата подписания отчета о государственых закупках из одного источникаenforcement- Флаг с/без обеспечения - 1 - с обеспечением, 2 - без обеспеченияsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 409548,
+                "parent_id": 0,
+                "root_id": 409548,
+                "trd_buy_id": 243809,
+                "trd_buy_number_anno": "243809-1",
+                "ref_amendm_agreem_justif_id": [
+                  0
+                ],
+                "ref_contract_status_id": 455,
+                "deleted": 0,
+                "crdate": "2018-01-08 09:03:16",
+                "last_update_date": "2018-01-08 10:03:16",
+                "supplier_id": 69729,
+                "supplier_biin": "120440026517",
+                "supplier_bik": "KCJBKZKX",
+                "supplier_iik": "KZ138560000005175000",
+                "supplier_bank_name_kz": "\"Банк ЦентрКредит\" АҚ",
+                "supplier_bank_name_ru": "АО \"Банк ЦентрКредит\"",
+                "contract_number": "89",
+                "sign_reason_doc_name": "Итоговый протокол о проведении государственных закупок",
+                "sign_reason_doc_date": "2018-01-08 09:03:16",
+                "trd_buy_itogi_date_public": "2018-01-08 09:03:16",
+                "customer_id": 10950,
+                "customer_bin": "000140001536",
+                "customer_bik": "KKMFKZ2A",
+                "customer_iik": "92070101KSN0000000",
+                "customer_bank_name_kz": "\"ҚР Қаржы министрлігінің Қазынашылық Комитеті\" РММ",
+                "customer_bank_name_ru": "РГУ \"КОМИТЕТ КАЗНАЧЕЙСТВА МИНИСТЕРСТВА ФИНАНСОВ РК\"",
+                "contract_number_sys": "000140001536/160089/00",
+                "fin_year": 2016,
+                "ref_contract_agr_form_id": 1,
+                "ref_contract_year_type_id": 1,
+                "ref_finsource_id": 1,
+                "ref_currency_code": "KZT",
+                "contract_sum": 32032,
+                "contract_sum_wnds": 32032,
+                "sign_date": "2018-01-08 10:03:16",
+                "ec_end_date": "2016-12-31 00:00:00",
+                "plan_exec_date": "2018-01-08 02:04:16",
+                "fakt_exec_date": null,
+                "fakt_sum_wnds": 0,
+                "contract_end_date": null,
+                "ref_contract_cancel_id": 0,
+                "ref_contract_type_id": 1,
+                "description_kz": "автокөліктерге арналған майлар",
+                "description_ru": "автомобильные масла",
+                "fakt_trade_methods_id": 3,
+                "ec_customer_approve": 1,
+                "ec_supplier_approve": 1,
+                "contract_ms": 0,
+                "system_id": 3,
+                "index_date": "2018-01-08 08:01:18"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Полная информация по договорам",
+        "id": "reestr-dogovorov-polnaia-informatsiia-po-dogovoram",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/all"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- Идентификаторparent_id- Ид предыдущего договораroot_id- Ид корневого договораtrd_buy_id- Ид Объявленияtrd_buy_number_anno- Номер объявленияref_amendm_agreem_justif_id- Причина внесения изменений в договорref_contract_status_id- Статусdeleted- Флаг удаления записиcrdate- Дата создания записиlast_update_date- Дата изменения записиsupplier_id- ИД Поставщикаsupplier_biin- БИН/ИИН Поставщикаsupplier_bik- БИК поставщикаsupplier_iik- ИИК поставщикаsupplier_bank_name_kz- Наименвоание банка поставщика на казахском языкеsupplier_bank_name_ru- Наименвоание банка поставщика на русском языкеcontract_number- Номер договора, заполняемый пользователемsign_reason_doc_name- Наименование подтверждающего документаsign_reason_doc_date- Дата подтверждающего документаtrd_buy_itogi_date_public- Дата подведения итогов госзакупокcustomer_id- ИД заказчика ТРУcustomer_bin- БИН заказчика ТРУcustomer_bik- БИК заказчикаcustomer_iik- ИИК заказчикаcustomer_bank_name_kz- Наименвоание банка заказчика на казахском языкеcustomer_bank_name_ru- Наименвоание банка заказчика на русском языкеcontract_number_sys- Номер договора в системеfin_year- Финансовый годref_contract_agr_form_id- Форма заключения договораref_contract_year_type_id- Тип закупки (Тип закупки)ref_finsource_id- Источник финансированияref_currency_code- Код валюты договораcontract_sum- Сумма заключенного договора без НДСcontract_sum_wnds- Сумма заключенного договора с НДСsign_date- Дата заключения договораec_end_date- Срок действия договораplan_exec_date- Планируемая дата исполненияfakt_exec_date- Фактическая дата исполненияfakt_sum_wnds- Общая фактическая сумма договораcontract_end_date- Дата расторжения договораref_contract_cancel_id- Основание и причинаref_contract_type_id- Тип договораdescription_kz- Описание на казахском языкеdescription_ru- Описание на русском языкеfakt_trade_methods_id- Фактический способ закупкиec_customer_approve- Флаг “Согласован поставщиком”ec_supplier_approve- Флаг “Согласован заказчиком”contract_ms- Итоговая доля местного содержания по всему договору МСт (итоговая) (Местное содержание по договору, %)supplier_legal_address- Юридический адрес поставщикаcustomer_legal_address- Юридический адрес заказчикаpayments_terms_ru- Условия поставки на русском языкеpayments_terms_kz- Условия поставки на государственном языкеis_gu- Признак ГУexchange_rate- Курс валюты (для валютных договоров)report_status- Статус отчета о государственых закупках из одного источникаreport_created_at- Дата создания отчета о государственых закупках из одного источникаreport_sign_at- Дата подписания отчета о государственых закупках из одного источникаenforcement- Флаг с/без обеспечения - 1 - с обеспечением, 2 - без обеспеченияsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 3726048,
+                "limit": 50,
+                "next_page": "/v3/contract/all?page=next&search_after=4996100",
+                "items": [
+                  {
+                    "id": 409548,
+                    "parent_id": 0,
+                    "root_id": 409548,
+                    "trd_buy_id": 243809,
+                    "trd_buy_number_anno": "243809-1",
+                    "ref_amendm_agreem_justif_id": [
+                      0
+                    ],
+                    "ref_contract_status_id": 455,
+                    "deleted": 0,
+                    "crdate": "2018-01-08 09:03:16",
+                    "last_update_date": "2018-01-08 10:03:16",
+                    "supplier_id": 69729,
+                    "supplier_biin": "120440026517",
+                    "supplier_bik": "KCJBKZKX",
+                    "supplier_iik": "KZ138560000005175000",
+                    "supplier_bank_name_kz": "\"Банк ЦентрКредит\" АҚ",
+                    "supplier_bank_name_ru": "АО \"Банк ЦентрКредит\"",
+                    "contract_number": "89",
+                    "sign_reason_doc_name": "Итоговый протокол о проведении государственных закупок",
+                    "sign_reason_doc_date": "2018-01-08 09:03:16",
+                    "trd_buy_itogi_date_public": "2018-01-08 09:03:16",
+                    "customer_id": 10950,
+                    "customer_bin": "000140001536",
+                    "customer_bik": "KKMFKZ2A",
+                    "customer_iik": "92070101KSN0000000",
+                    "customer_bank_name_kz": "\"ҚР Қаржы министрлігінің Қазынашылық Комитеті\" РММ",
+                    "customer_bank_name_ru": "РГУ \"КОМИТЕТ КАЗНАЧЕЙСТВА МИНИСТЕРСТВА ФИНАНСОВ РК\"",
+                    "contract_number_sys": "000140001536/160089/00",
+                    "fin_year": 2016,
+                    "ref_contract_agr_form_id": 1,
+                    "ref_contract_year_type_id": 1,
+                    "ref_finsource_id": 1,
+                    "ref_currency_code": "KZT",
+                    "contract_sum": 32032,
+                    "contract_sum_wnds": 32032,
+                    "sign_date": "2018-01-08 10:03:16",
+                    "ec_end_date": "2016-12-31 00:00:00",
+                    "plan_exec_date": "2018-01-08 02:04:16",
+                    "fakt_exec_date": null,
+                    "fakt_sum_wnds": 0,
+                    "contract_end_date": null,
+                    "ref_contract_cancel_id": 0,
+                    "ref_contract_type_id": 1,
+                    "description_kz": "автокөліктерге арналған майлар",
+                    "description_ru": "автомобильные масла",
+                    "fakt_trade_methods_id": 3,
+                    "ec_customer_approve": 1,
+                    "ec_supplier_approve": 1,
+                    "contract_ms": 0,
+                    "system_id": 3,
+                    "index_date": "2018-01-08 08:01:18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Предметы договора",
+        "id": "reestr-dogovorov-predmety-dogovora",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/contract/57113/units"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- ИД Предмета договораlot_id- ИД Лотаpln_point_id- ИД пункта планаitem_price- Цена за единицу без НДСitem_price_wnds- Цена за единицу с НДСquantity- Количествоtotal_sum- Сумма итогов закупки (итоговая сумма, без НДС)total_sum_wnds- Сумма итогов закупки (итоговая сумма, с НДС)fact_sum- Фактически уплаченная поставщику сумма по договору, без НДСfact_sum_wnds- Фактически уплаченная поставщику сумма по договору, с НДСks_proc- Доля (процент) каз.содержания (расчитывается из суммы)ks_sum- Сумма каз.содержания (из фактически уплаченной суммы)deleted- Флаг удаленияtrd_buy_id- ИД Объявленияcontract_registry_id- ИД Договораcrdate- Дата созданияexec_fakt_date- Дата фактического испольненияexec_plan_date- Дата планового исполненияexecuted- Флаг исполненияparent_id- ИД предыдущего предмета договораroot_id- ИД роительского предмета договораref_amendm_agreem_justif_id- Основание изменения договораsystem_id- ИД системыindex_date- Дата индексацииspec- Спецификацияref_ekrb_id- ИД справочника ЭКРБspec_kat- специфики по договоруpoint_spec_id- специфики по пункту планаtotal_sum- Сумма итогов закупки (итоговая сумма, без НДС)total_sum_wnds- Сумма итогов закупки (итоговая сумма, с НДС)ref_fkrb_subprogram_id- Код подпрограммыref_fkrb_id- ИД справочника ФКРБref_fkrb_program_id- Код программыfin_year- Финансовый годplan_sum- Плановая сумма (без НДС)plan_sum_wnds- Плановая сумма (с НДС)fact_sum- Фактическая сумма (без НДС)fact_sum_wnds- Фактическая сумма (с НДС)",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 2787,
+                    "lot_id": 0,
+                    "pln_point_id": 283953,
+                    "item_price": 44642,
+                    "item_price_wnds": 44642,
+                    "quantity": 1,
+                    "total_sum": 44642,
+                    "total_sum_wnds": 44642,
+                    "fact_sum": 0,
+                    "fact_sum_wnds": 0,
+                    "ks_proc": 0,
+                    "ks_sum": 0,
+                    "deleted": 1,
+                    "trd_buy_id": 0,
+                    "contract_registry_id": 3423,
+                    "crdate": "2018-01-08 13:01:16",
+                    "exec_fakt_date": null,
+                    "exec_plan_date": null,
+                    "executed": 0,
+                    "parent_id": 0,
+                    "root_id": 2787,
+                    "system_id": 3,
+                    "index_date": "2018-01-08 08:01:18",
+                    "spec": [
+                      {
+                        "ref_ekrb_id": 878,
+                        "spec_kat": 2634,
+                        "point_spec_id": 0,
+                        "total_sum": "14049",
+                        "total_sum_wnds": "14049",
+                        "ref_fkrb_subprogram_id": 742763,
+                        "ref_fkrb_id": 742763,
+                        "ref_fkrb_program_id": 739256,
+                        "fin_year": 2016,
+                        "plan_sum": "14049",
+                        "plan_sum_wnds": "14049",
+                        "fact_sum": "0",
+                        "fact_sum_wnds": "0"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Реестр электронных актов",
+        "id": "reestr-elektronnykh-aktov-reestr-elektronnykh-aktov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/acts"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- IDakt_date- Дата актаnumber_act- Номер актаapprove_date- Дата утверждения актаcreate_date_act- Дата создания актаcontract_root_id- ИД основного договораcontract_id- ИД договораstatus_id- ИД статусаis_deleted- Признак удаленияday_overdue- Количество просроченных днейsum_avans- Авансовая суммаsum_beginning- Сумма оплаты с начала действия Договораsum_fine- Сумма неустойки (штраф, пеня) за просрочку сроков выполнения работ или ненадлежащего исполнения (частичного неисполнения) обязательствsum_previously- Ранее заактированные суммыsum_transfer- Сумма, требуемая к перечислению Поставщикуcreate_date_gen_info- Create date gen infostatus_name_ru- Статус на русском языкеstatus_name_kz- Статус на государственном языкеsupplier_id- ИД поставщикаcustomer_id- ИД заказчикаis_gu- Признак ГУtype_act- Тип акта, 1 - электронный, 2 - бумажныйref_subject_type_id- Вид предмета закупокparent_id- ИД родительского актаsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 10148,
+                "limit": 50,
+                "next_page": "/v3/acts?page=next&search_after=24719",
+                "items": [
+                  {
+                    "id": 24789,
+                    "akt_date": "2019-02-08 11:27:39",
+                    "number_act": "A000ZM/00/1",
+                    "approve_date": null,
+                    "create_date_act": "2019-02-08 11:27:39",
+                    "contract_root_id": 556601,
+                    "contract_id": 556601,
+                    "status_id": 15,
+                    "is_deleted": 0,
+                    "day_overdue": null,
+                    "sum_avans": null,
+                    "sum_beginning": null,
+                    "sum_fine": null,
+                    "sum_previously": null,
+                    "sum_transfer": 308050,
+                    "create_date_gen_info": "2019-02-08 11:27:39",
+                    "status_name_ru": "утвержден",
+                    "status_name_kz": "бекітілді",
+                    "supplier_id": 1831,
+                    "customer_id": 16262,
+                    "is_gu": 0,
+                    "type_act": 1,
+                    "ref_subject_type_id": null,
+                    "parent_id": 0,
+                    "system_id": null,
+                    "index_date": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Акт детально",
+        "id": "reestr-elektronnykh-aktov-akt-detal-no",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/acts/24789"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- IDakt_date- Дата актаnumber_act- Номер актаapprove_date- Дата утверждения актаcreate_date_act- Дата создания актаcontract_root_id- ИД основного договораcontract_id- ИД договораstatus_id- ИД статусаis_deleted- Признак удаленияday_overdue- Количество просроченных днейsum_avans- Авансовая суммаsum_beginning- Сумма оплаты с начала действия Договораsum_fine- Сумма неустойки (штраф, пеня) за просрочку сроков выполнения работ или ненадлежащего исполнения (частичного неисполнения) обязательствsum_previously- Ранее заактированные суммыsum_transfer- Сумма, требуемая к перечислению Поставщикуcreate_date_gen_info- Create date gen infostatus_name_ru- Статус на русском языкеstatus_name_kz- Статус на государственном языкеsupplier_id- ИД поставщикаcustomer_id- ИД заказчикаis_gu- Признак ГУtype_act- Тип акта, 1 - электронный, 2 - бумажныйref_subject_type_id- Вид предмета закупокparent_id- ИД родительского актаsystem_id- ИД системыindex_date- Дата индексации",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 24789,
+                "akt_date": "2019-02-08 11:27:39",
+                "number_act": "A000ZM/00/1",
+                "approve_date": null,
+                "create_date_act": "2019-02-08 11:27:39",
+                "contract_root_id": 556601,
+                "contract_id": 556601,
+                "status_id": 15,
+                "is_deleted": 0,
+                "day_overdue": null,
+                "sum_avans": null,
+                "sum_beginning": null,
+                "sum_fine": null,
+                "sum_previously": null,
+                "sum_transfer": 308050,
+                "create_date_gen_info": "2019-02-08 11:27:39",
+                "status_name_ru": "утвержден",
+                "status_name_kz": "бекітілді",
+                "supplier_id": 1831,
+                "customer_id": 16262,
+                "is_gu": 0,
+                "type_act": 1,
+                "ref_subject_type_id": null,
+                "parent_id": 0,
+                "system_id": null,
+                "index_date": null
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение полного списка платежей",
+        "id": "kaznacheiskie-platezhi-poluchenie-polnogo-spiska-platezhei",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/treasury-pay"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- Уникальный идентификаторnom_za- Номер заявкиcontract_id- ID договораdt_reg- Дата регистрации договора в органах Комитета Казначействаnom_uved- Номер уведомления о регистрации договораsupplier- Наименование получателя денег (поставщика)rnn_supplier- РНН получателя денег (поставщика)bik_supplier- БИК получателя денег (поставщика)iik_supplier- ИИК получателя денег (поставщика)code_supplier- Код получателя денег (поставщика)nom_dog- Номер договораdt_dog- Дата заключения договораitem_description- Описание услуги/товараquantity- Цена товара/услугиunit_price- Количествоnom_dop- Номер дополнительного соглашенияdt_dop- Дата заключения доп. соглашенияtype_bujet- Тип бюджетаbudget_name_ru- Наименование бюджета русbudget_name_kz- Наименование бюджета казkato- Код подразделения Комитета Казначействаfunc- Код (АБП + Программа + Подпрограмма)espk- Специфика расходаgu- Код государственного учрежденияfin_source- Источник финансированияpo_header_id- Уникальный системный идентификатор номер договора в ИИСКlast_update_date- Дата последнего обновления записи пользователем в ИИСКvendor_id- Идентификатор получателя денегpdi_update_date- Дата последнего обновления записиprepay_sum- Предварительно оплаченная сумма (Сумма предоплаты)str_prepay_sum- Предварительно оплаченная сумма (Сумма предоплаты)check_id- Уникальный системный идентификатор номера платежа в ИИСКinvoice_id- Идентификатор счета к оплатеpay_description- Описание платежаinvnum- Номер счета к оплате/платежного порученияpay_amount- Сумма платежаcheck_number- Номер платежа в ИИСКpay_date- Дата платежаcode_combination_id- ID комбинации счетаppn- Номер платежного порученияaccounting_date- Бизнес–датаindex_date- Дата индексацииsystem_id- Уникальный идентификатор системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 96138904,
+                "nom_za": "EGZ-200085/01-001",
+                "contract_id": 580712,
+                "dt_reg": "2021-09-07 17:19:49",
+                "nom_uved": "5625751",
+                "supplier": "Акционерное общество \"Центр электронных финансов\"",
+                "rnn_supplier": "331000021367",
+                "bik_supplier": "SABRKZKA",
+                "iik_supplier": "KZ67914142204KZ000L4",
+                "code_supplier": "733432",
+                "nom_dog": "577868",
+                "dt_dog": "2021-09-07 00:00:00",
+                "item_description": "1",
+                "unit_price": 500000,
+                "quantity": 1,
+                "type_bujet": "01",
+                "budget_name_ru": "Республиканский бюджет",
+                "budget_name_kz": "Республикалық бюджет",
+                "kato": "620101",
+                "func": "217001100",
+                "espk": "000131",
+                "gu": "2170001",
+                "fin_source": "1",
+                "po_header_id": 5556418,
+                "last_update_date": "2021-09-07 00:00:00",
+                "vendor_id": 1902064,
+                "pdi_update_date": "2021-09-07 02:29:44",
+                "prepay_sum": 0,
+                "str_prepay_sum": "",
+                "check_id": 93781147,
+                "invoice_id": 96138904,
+                "pay_description": "1",
+                "invnum": "1",
+                "pay_amount": 500000,
+                "check_number": "93415919",
+                "pay_date": "2021-09-07 00:00:00",
+                "code_combination_id": 7927086,
+                "ppn": 282835271,
+                "system_id": 3,
+                "index_date": "2021-09-27 17:14:40"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Получение списка платежей по уникальному идентификатору договора",
+        "id": "kaznacheiskie-platezhi-poluchenie-spiska-platezhei-po-unikal-nomu-identifikatoru-dogovora",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/treasury-pay/580712"
+        },
+        "response": {
+          "description": "Ответ сервиса:id- Уникальный идентификаторnom_za- Номер заявкиcontract_id- ID договораdt_reg- Дата регистрации договора в органах Комитета Казначействаnom_uved- Номер уведомления о регистрации договораsupplier- Наименование получателя денег (поставщика)rnn_supplier- РНН получателя денег (поставщика)bik_supplier- БИК получателя денег (поставщика)iik_supplier- ИИК получателя денег (поставщика)code_supplier- Код получателя денег (поставщика)nom_dog- Номер договораdt_dog- Дата заключения договораitem_description- Описание услуги/товараquantity- Цена товара/услугиunit_price- Количествоnom_dop- Номер дополнительного соглашенияdt_dop- Дата заключения доп. соглашенияtype_bujet- Тип бюджетаbudget_name_ru- Наименование бюджета русbudget_name_kz- Наименование бюджета казkato- Код подразделения Комитета Казначействаfunc- Код (АБП + Программа + Подпрограмма)espk- Специфика расходаgu- Код государственного учрежденияfin_source- Источник финансированияpo_header_id- Уникальный системный идентификатор номер договора в ИИСКlast_update_date- Дата последнего обновления записи пользователем в ИИСКvendor_id- Идентификатор получателя денегpdi_update_date- Дата последнего обновления записиprepay_sum- Предварительно оплаченная сумма (Сумма предоплаты)str_prepay_sum- Предварительно оплаченная сумма (Сумма предоплаты)check_id- Уникальный системный идентификатор номера платежа в ИИСКinvoice_id- Идентификатор счета к оплатеpay_description- Описание платежаinvnum- Номер счета к оплате/платежного порученияpay_amount- Сумма платежаcheck_number- Номер платежа в ИИСКpay_date- Дата платежаcode_combination_id- ID комбинации счетаppn- Номер платежного порученияaccounting_date- Бизнес–датаindex_date- Дата индексацииsystem_id- Уникальный идентификатор системы",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "id": 96138904,
+                "nom_za": "EGZ-200085/01-001",
+                "contract_id": 580712,
+                "dt_reg": "2021-09-07 17:19:49",
+                "nom_uved": "5625751",
+                "supplier": "Акционерное общество \"Центр электронных финансов\"",
+                "rnn_supplier": "331000021367",
+                "bik_supplier": "SABRKZKA",
+                "iik_supplier": "KZ67914142204KZ000L4",
+                "code_supplier": "733432",
+                "nom_dog": "577868",
+                "dt_dog": "2021-09-07 00:00:00",
+                "item_description": "1",
+                "unit_price": 500000,
+                "quantity": 1,
+                "type_bujet": "01",
+                "budget_name_ru": "Республиканский бюджет",
+                "budget_name_kz": "Республикалық бюджет",
+                "kato": "620101",
+                "func": "217001100",
+                "espk": "000131",
+                "gu": "2170001",
+                "fin_source": "1",
+                "po_header_id": 5556418,
+                "last_update_date": "2021-09-07 00:00:00",
+                "vendor_id": 1902064,
+                "pdi_update_date": "2021-09-07 02:29:44",
+                "prepay_sum": 0,
+                "str_prepay_sum": "",
+                "check_id": 93781147,
+                "invoice_id": 96138904,
+                "pay_description": "1",
+                "invnum": "1",
+                "pay_amount": 500000,
+                "check_number": "93415919",
+                "pay_date": "2021-09-07 00:00:00",
+                "code_combination_id": 7927086,
+                "ppn": 282835271,
+                "system_id": 3,
+                "index_date": "2021-09-27 17:14:40"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Статусы лотов",
+        "id": "spravochniki-statusy-lotov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_lots_status"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 28,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_kz": "Жарияланды (бағалы ұсыныстарды қабылдау)",
+                    "code": "PublishedOfferAccept",
+                    "name_ru": "Опубликован (прием ценовых предложений)",
+                    "id": 240
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Способ закупки",
+        "id": "spravochniki-sposob-zakupki",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_trade_methods"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 14,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "symbol_code": "ЧТБнеГЗ",
+                    "name_ru": "Через товарные биржи (не ГЗ)",
+                    "id": 118,
+                    "name_kz": "Тауар биржасы арқылы"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "МКЕЙ",
+        "id": "spravochniki-mkei",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_units"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 621,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_units?page=next&search_after=365",
+                "items": [
+                  {
+                    "name_ru": "Мегакалория",
+                    "name_kz": "Мегакалория",
+                    "code2": "7.11 ",
+                    "code": "240",
+                    "alpha_code": "МГ"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Месяца",
+        "id": "spravochniki-mesiatsa",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_months"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 13,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_ru": "Прошлый год",
+                    "id": 99,
+                    "name_kz": "Өткен жыл"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Статусы пуктов планов",
+        "id": "spravochniki-statusy-puktov-planov",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_pln_point_status"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 30,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "code": "ContractExecuted",
+                    "name_ru": "Исполнен",
+                    "id": 19,
+                    "name_kz": "Орындалды"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Вид предмета закупки",
+        "id": "spravochniki-vid-predmeta-zakupki",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_subject_type"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 3,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 1,
+                    "name_kz": "Тауарлар",
+                    "name_ru": "Товар"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Источник финансирования",
+        "id": "spravochniki-istochnik-finansirovaniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_finsource"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 6,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_ru": "за счет денег, передаваемых государственному учреждению физическими и (или) юридическими лицами на условиях их возвратности",
+                    "id": 5,
+                    "code": "5",
+                    "name_kz": "Жеке және заңды тұлғалардың ақшасын уақытша орналастыру",
+                    "nogz": 0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Администратор бюджетной программы",
+        "id": "spravochniki-administrator-biudzhetnoi-programmy",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_abp"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 225,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_abp?page=next&search_after=252",
+                "items": [
+                  {
+                    "id": 356,
+                    "shortname_kz": "ҚарҚалБасқ",
+                    "shortname_ru": "УпрФинГор",
+                    "name_ru": "Управление финансов города республиканского значения, столицы",
+                    "name_kz": "Республикалық маңызы бар қаланың, астананың қаржы басқармасы",
+                    "code": "356"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Тип пункта плана",
+        "id": "spravochniki-tip-punkta-plana",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_point_type"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 3,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_kz": "Қаржылық жылдан аспайтын сатып алулар ",
+                    "name_ru": "Закупки, не превышающие финансовый год",
+                    "id": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "КАТО",
+        "id": "spravochniki-kato",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_kato"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 17796,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_kato?page=next&search_after=113247300",
+                "items": [
+                  {
+                    "level_": 5,
+                    "hij": "100",
+                    "code": "111837100",
+                    "full_name_kz": "Ақмола облысы, Степногор Қ.Ә., Бестөбе к.ә., Бестөбе к.",
+                    "full_name_ru": "Акмолинская область, Степногорск Г.А., Бестобинская п.а., п.Бестобе",
+                    "parent_code": "111837000",
+                    "k": 1,
+                    "ef": "37",
+                    "name_ru": "п.Бестобе",
+                    "ab": "11",
+                    "name_kz": "Бестөбе к.",
+                    "cd": "18"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Страны",
+        "id": "spravochniki-strany",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_countries"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 254,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_countries?page=next&search_after=360",
+                "items": [
+                  {
+                    "code": "008",
+                    "name_kz": "АЛБАНИЯ",
+                    "code_2": "al",
+                    "name_ru": "АЛБАНИЯ",
+                    "code_3": "alb"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник специфик",
+        "id": "spravochniki-spravochnik-spetsifik",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_ekrb"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 96,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_ekrb?page=next&search_after=855",
+                "items": [
+                  {
+                    "code": "221",
+                    "id": 855,
+                    "name_kz": "Қазақстан Республикасы Үкіметінің сыртқы қарыздары бойынша сыйақы төлемдері",
+                    "name_ru": "Выплаты вознаграждений по внешним займам Правительства Республики Казахстан"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник программ ФКР",
+        "id": "spravochniki-spravochnik-programm-fkr",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_fkrb_program"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 5895,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_fkrb_program?page=next&search_after=2111435",
+                "items": [
+                  {
+                    "code": "395007",
+                    "name_ru": "Оказание жилищной помощи",
+                    "prg": "007",
+                    "id": 2111250,
+                    "name_kz": "Тұрғын үйге көмек көрсету"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник подпрограмм ФКР",
+        "id": "spravochniki-spravochnik-podprogramm-fkr",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_fkrb_subprogram"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 1498,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_fkrb_subprogram?page=next&search_after=742600",
+                "items": [
+                  {
+                    "id": 2117196,
+                    "ppr": "015",
+                    "name_ru": "За счет средств местного бюджета",
+                    "name_kz": "Жергілікті бюджет қаражаты есебінен"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Обоснование применения способа закупки",
+        "id": "spravochniki-obosnovanie-primeneniia-sposoba-zakupki",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_justification"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 55,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_justification?page=next&search_after=18",
+                "items": [
+                  {
+                    "id": 52,
+                    "name_kz": "39-бап 3-тармақ 52-тармақша ұлттық қорғаныс және ұлттық қауіпсіздік мұқтаждары үшін, сондай-ақ құқықтық тәртіпті қамтамасыз ету үшін байланыс қызметтерін сатып алу;",
+                    "ref_trade_methods_id": 23,
+                    "name_ru": "пп.52 п.3 ст.39 приобретения услуг связи для нужд национальной обороны и национальной безопасности, а также обеспечения правопорядка;"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Вид дополнительного соглашения",
+        "id": "spravochniki-vid-dopolnitel-nogo-soglasheniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_amendment_agreem_type"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 2,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 2,
+                    "name_kz": "Шартты өзгерту",
+                    "name_ru": "Изменение договора"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Основания создания дополнительного соглашения",
+        "id": "spravochniki-osnovaniia-sozdaniia-dopolnitel-nogo-soglasheniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_amendm_agreem_justif"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 24,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "cname_ru": "удержанием (взысканием)  неустоек (штрафов, пени)",
+                    "cname_kz": "тұрақсыздық айыпты(айыппұл, өсімпұл) шегеру(жазалау) ",
+                    "name_ru": "Выплата неустоек, пени в счет бюджета",
+                    "id": 19,
+                    "name_kz": "Бюджет есебіне тұрақсыздық айыптарын, өсімақылар төлеу"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Вид бюджета",
+        "id": "spravochniki-vid-biudzheta",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_budget_type"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 4,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_ru": "Районный бюджет, города областного значения",
+                    "code": "03",
+                    "id": 5,
+                    "name_kz": "Ауданның бюджет"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Тип закупки",
+        "id": "spravochniki-tip-zakupki",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_type_trade"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 4,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 5,
+                    "name_ru": "Районный бюджет, города областного значения",
+                    "name_kz": "Ауданның бюджет"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Статус объявления",
+        "id": "spravochniki-status-ob-iavleniia",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_buy_status"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 26,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "code": "PublishedPriceOffers",
+                    "name_ru": "Опубликовано (прием ценовых предложений)",
+                    "id": 240,
+                    "name_kz": "Жарияланды (бағалы ұсыныстарды қабылдау)"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Статусы ценовых предложений",
+        "id": "spravochniki-statusy-tsenovykh-predlozhenii",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_po_st"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 16,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_ru": "Победитель",
+                    "name_kz": "Жеңімпаз",
+                    "code": "FirstWinner",
+                    "id": 360
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Роль члена комиссии",
+        "id": "spravochniki-rol-chlena-komissii",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_comm_roles"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 4,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 12,
+                    "code": "organizator",
+                    "name_kz": "Организатор субъект ГЗ",
+                    "name_ru": "Организатор субъект ГЗ"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Статус договора",
+        "id": "spravochniki-status-dogovora",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_contract_status"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 29,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_ru": "Действует",
+                    "code": "Valid",
+                    "name_kz": "Әрекетте",
+                    "id": 190
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник форм заключения договора",
+        "id": "spravochniki-spravochnik-form-zakliucheniia-dogovora",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_contract_agr_form"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 3,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 2,
+                    "name_kz": "Нетиповая форма",
+                    "name_ru": "Нетиповая форма"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Тип договора (однолетний/многолетний)",
+        "id": "spravochniki-tip-dogovora-odnoletnii-mnogoletnii",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_contract_year_type"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 2,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 2,
+                    "name_kz": "Многолетний",
+                    "name_ru": "Многолетний"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник валют",
+        "id": "spravochniki-spravochnik-valiut",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_currency"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 117,
+                "limit": 50,
+                "next_page": "/v3/refs/ref_currency?page=next&search_after=PKR",
+                "items": [
+                  {
+                    "name": "Казахский тенге",
+                    "code": "KZT"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник статей для расторжения договора",
+        "id": "spravochniki-spravochnik-statei-dlia-rastorzheniia-dogovora",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_contract_cancel"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 19,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_ru": "§ нарушение ограничений, предусмотренных пп.2 п.19 ст. 43 Закона о ГЗ",
+                    "id": 24,
+                    "name_kz": "МС туралы Заңның 43 б. 19 т. 2 тт. көзделген § шектеулерді бұзу"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник типов договора",
+        "id": "spravochniki-spravochnik-tipov-dogovora",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_contract_type"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 2,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "name_kz": "Основной договор",
+                    "name_ru": "Основной договор",
+                    "id": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Справочник причин внесения в РНУ",
+        "id": "spravochniki-spravochnik-prichin-vneseniia-v-rnu",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_reason"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 7,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 5,
+                    "type": 1,
+                    "name_kz": "Истек срок включения в реестр",
+                    "name_ru": "Истек срок включения в реестр"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Список причин по которым не состоялся аукцион по лоту",
+        "id": "spravochniki-spisok-prichin-po-kotorym-ne-sostoialsia-auktsion-po-lotu",
+        "request": {
+          "method": "GET",
+          "endpoint": "/v3/refs/ref_buy_lot_reject_reason"
+        },
+        "response": {
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "responses": [
+            {
+              "content_type": "application/json",
+              "body": {
+                "total": 46,
+                "limit": 50,
+                "next_page": "",
+                "items": [
+                  {
+                    "id": 7,
+                    "name_ru": "к участию в конкурсе не допущен ни один потенциальный поставщик",
+                    "name_kz": "Конкурсқа қатысуға бірде-бір әлеуетті қатысушы жіберілмеген"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
