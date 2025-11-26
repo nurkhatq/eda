@@ -29,7 +29,7 @@ DB_CONFIG = {
 }
 
 # Параметры API
-API_TOKEN = os.getenv('GOSZAKUP_API_TOKEN', None)
+API_TOKEN = os.getenv('GOSZAKUP_API_TOKEN', "3838a025586cf498351da633065b7bf5")
 RETRY_COUNT = int(os.getenv('ETL_RETRY_COUNT', 3))
 DELAY_SECONDS = int(os.getenv('ETL_DELAY_SECONDS', 1))
 

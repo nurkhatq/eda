@@ -2,7 +2,7 @@ version: '3.8'
 
 x-airflow-common:
   &airflow-common
-  image: apache/airflow:2.8.1-python3.11
+  image: airflow-goszakup:latest
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
@@ -12,7 +12,6 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
-    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- requests psycopg2-binary}
 
     # Параметры подключения к БД Goszakup
     GOSZAKUP_DB_HOST: postgres-goszakup

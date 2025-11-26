@@ -1,0 +1,13 @@
+FROM apache/airflow:2.8.1-python3.11
+
+USER root
+# Если нужны системные libs — добавляй здесь
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && apt-get clean
+
+USER airflow
+# Устанавливаем нужные пакеты (однократно, стабильно)
+RUN pip install --no-cache-dir \
+    requests \
+    psycopg2-binary
